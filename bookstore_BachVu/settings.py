@@ -76,11 +76,11 @@ WSGI_APPLICATION = 'bookstore_BachVu.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME', 'myproject'),
+        'NAME': os.environ.get('DB_NAME', 'bookstore'),
         'HOST': os.environ.get('DB_HOST', 'localhost'),
         'PORT': 5432,
-        'USER': os.environ.get('DB_USER', 'root'),         # you should change this
-        'PASSWORD': os.environ.get('DB_PASS', 'PASS'),     # and also this
+        'USER': os.environ.get('DB_USER', 'bachvu'),         # you should change this
+        'PASSWORD': os.environ.get('DB_PASS', 'bachvu1991'),     # and also this
     }
 }
 
