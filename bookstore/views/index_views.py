@@ -3,7 +3,6 @@ from django.views.generic import View
 
 
 class IndexView(View):
-
     template = "bookstore/index.html"
 
     def get(self, request):

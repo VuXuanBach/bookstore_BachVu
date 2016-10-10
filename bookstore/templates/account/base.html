@@ -1,0 +1,16 @@
+{% extends "bookstore/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block head_title %}{% trans "BookStore - Home" %}{% endblock %}
+
+{% block base-content %}
+    <body>
+    {% block body %}
+        {% block content %}
+        {% endblock %}
+    {% endblock %}
+    {% block extra_body %}
+    {% endblock %}
+    </body>
+{% endblock %}

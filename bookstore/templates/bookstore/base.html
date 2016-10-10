@@ -1,0 +1,28 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head>
+    <title>{% block head_title %}{% endblock %}</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <link rel="shortcut icon" href="{% static 'bookstore/images/favicon.ico' %}"/>
+    <link rel="stylesheet" href="{% static 'bookstore/css/style.css' %}" type="text/css" media="all"/>
+    <script type="text/javascript" src="{% static 'bookstore/js/jquery-1.6.2.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bookstore/js/jquery.jcarousel.min.js' %}"></script>
+    <!--[if IE 6]>
+		<script type="text/javascript" src="{% static 'bookstore/js/png-fix.js' %}"></script>
+	<![endif]-->
+    <script type="text/javascript" src="{% static 'bookstore/js/functions.js' %}"></script>
+    {% block extra_head %}
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+    {% block base-content %}
+    {% endblock %}
+{% endblock %}
+{% block extra_body %}
+{% endblock %}
+</body>
+</html>
