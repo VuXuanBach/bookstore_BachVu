@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
+    'lettuce.django',
+        
     'bookstore.apps.BookstoreConfig',
     'allauth',
     'allauth.account',
