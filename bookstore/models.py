@@ -42,8 +42,8 @@ class Book(models.Model):
 class Comment(models.Model):
     rating = models.IntegerField(default=0)
     content = models.CharField(max_length=2000)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    book_id = models.ForeignKey(Book, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
     commented_at = models.DateTimeField('commented at')
 
     def __str__(self):
@@ -52,14 +52,14 @@ class Comment(models.Model):
 
 class Order(models.Model):
     ordered_at = models.DateTimeField('ordered at')
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     shipping_address = models.CharField(max_length=500)
     total_amount = models.IntegerField(default=0)
 
 
 class OrderLine(models.Model):
-    order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
-    book_id = models.ForeignKey(Book, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
     unit_price = models.IntegerField(default=0)
     quantity = models.IntegerField(default=0)
 
