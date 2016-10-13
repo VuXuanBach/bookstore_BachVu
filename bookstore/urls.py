@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 
-from bookstore.views.index_views import IndexView
+from bookstore.views.index_view import IndexView
 
 app_name = 'bookstore'
 urlpatterns = [

@@ -1,14 +1,14 @@
 from django.test import TestCase
 from django.utils import timezone
 
-from bookstore.models import User, Comment, Book
+from bookstore.models import Comment, Book
+from django.contrib.auth import get_user_model
 
 
 class CommentMethodTests(TestCase):
     def test_str(self):
         now = timezone.now()
-        user = User.objects.create(email="bach.vu@eastagile.com", password="test", phone="123456789",
-                                   full_name="Bach Vu", birthday=now, created_at=now)
+        user = get_user_model().objects.create(email="bach.vu@eastagile.com", password="test")
         book = Book.objects.create(title='Logistic', description='test logistic', author_name='Bach',
                                    publisher_name='Vu', published_at=now, unit_price=50000,
                                    photo='google.com', rating_count=1, rating_value=10)

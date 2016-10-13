@@ -1,4 +1,4 @@
 django-toolbelt==0.0.1
 psycopg2==2.6.1
-lettuce==0.2.21
-selenium==2.48.0
+behave==1.2.5
+selenium==2.53.6

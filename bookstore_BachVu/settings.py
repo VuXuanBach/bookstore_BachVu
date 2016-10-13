@@ -14,6 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -37,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
-    'lettuce.django',
-        
+    'behave_django',
+
     'bookstore.apps.BookstoreConfig',
     'allauth',
     'allauth.account',
@@ -81,11 +82,11 @@ WSGI_APPLICATION = 'bookstore_BachVu.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME', 'bookstore'),
+        'NAME': os.environ.get('DB_NAME', 'bookstore_bachvu'),
         'HOST': os.environ.get('DB_HOST', 'localhost'),
         'PORT': 5432,
-        'USER': os.environ.get('DB_USER', 'root'),  # you should change this
-        'PASSWORD': os.environ.get('DB_PASS', 'PASS'),  # and also this
+        'USER': os.environ.get('DB_USER', 'bachvu'),  # you should change this
+        'PASSWORD': os.environ.get('DB_PASS', 'bachvu'),  # and also this
     }
 }
 
@@ -114,7 +115,7 @@ AUTHENTICATION_BACKENDS = (
     "allauth.account.auth_backends.AuthenticationBackend",
 )
 
-SITE_ID = 4
+SITE_ID = 5
 
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
@@ -132,7 +133,19 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Custom user model + Allauth
+AUTH_USER_MODEL = 'bookstore.MyUser'
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_SUBJECT_PREFIX = "[BookStore] "
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
+LOGIN_REDIRECT_URL = '/bookstore/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/bookstore/'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
-
 STATIC_URL = '/static/'
