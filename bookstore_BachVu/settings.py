@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
-    'behave_django',
+    'django_nose',
 
     'bookstore.apps.BookstoreConfig',
     'allauth',
@@ -114,6 +114,8 @@ AUTHENTICATION_BACKENDS = (
     # `allauth` specific authentication methods, such as login by e-mail
     "allauth.account.auth_backends.AuthenticationBackend",
 )
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 SITE_ID = 5
 
