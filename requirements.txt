@@ -6,3 +6,4 @@ django-allauth==0.28.0
 ipdb==0.10.1
 django-pdb==0.5.1
 djangorestframework==3.4.7
+coveralls==1.1

@@ -1,0 +1,8 @@
+test:
+  pre:
+    - coverage erase
+  override:
+    - coverage run manage.py test
+  post:
+    - coveralls
+    - coverage html -d $CIRCLE_ARTIFACTS
