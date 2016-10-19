@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     'django_nose',
+    'bootstrapform',
 
     'bookstore.apps.BookstoreConfig',
     'allauth',
@@ -135,8 +136,12 @@ USE_L10N = True
 
 USE_TZ = True
 
+DATE_INPUT_FORMATS = '%d-%m-%y'
+
 # Custom user model + Allauth
 AUTH_USER_MODEL = 'bookstore.MyUser'
+# ACCOUNT_ADAPTER = 'bookstore.adapters.AccountAdapter'
+ACCOUNT_SIGNUP_FORM_CLASS = "bookstore.forms.SignUpForm"
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
@@ -146,6 +151,7 @@ ACCOUNT_EMAIL_SUBJECT_PREFIX = "[BookStore] "
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
 LOGIN_REDIRECT_URL = '/bookstore/'
+ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_LOGOUT_REDIRECT_URL = '/bookstore/'
 
 # Static files (CSS, JavaScript, Images)

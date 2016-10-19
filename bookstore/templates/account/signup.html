@@ -1,26 +1,58 @@
 {% extends "account/base.html" %}
 
 {% load i18n %}
+{% load bootstrap %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block head_title %}{% trans "Register" %}{% endblock %}
 
 {% block content %}
-    <div id="main" class="shell">
-        <h1>{% trans "Sign Up" %}</h1>
-
-        <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>
-            .{% endblocktrans %}</p>
-
-        <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-            {% csrf_token %}
-            <input id="id_email" name="email" placeholder="E-mail address" required="" type="email"/>{{ form.email.errors }}<br>
-            <input id="id_password1" name="password1" placeholder="Password" required="" type="password"/>{{ form.password1.errors }}<br>
-            <input id="id_password2" name="password2" placeholder="Password (again)" required="" type="password"/>{{ form.password2.errors }}<br>
-            {% if redirect_field_value %}
-                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-            {% endif %}
-            <button class="btn" type="submit">{% trans "Sign Up" %} &raquo;</button>
-        </form>
+    <div class="container-fluid">
+        <div class="row">
+            <p class="font-weight-bold font-size-14 text-color-orange col-sm-4 col-sm-offset-1">{% trans "Register" %}</p>
+        </div>
+        <div class="row">
+            <p class="font-weight-bold font-size-12 col-sm-4 col-sm-offset-1">{% trans "Fill the register and be part of our community." %}</p>
+        </div>
+        <br>
+        <div class="row">
+            <form class="signup form-horizontal col-sm-4 col-sm-offset-1" id="signup_form" method="post" role="form"
+                  action="{% url 'account_signup' %}">
+                {% csrf_token %}
+                <div class="container-fluid">
+                    <div class="row well">
+                        {{ form.full_name|bootstrap_horizontal }}
+                        {{ form.email|bootstrap_horizontal }}
+                        {{ form.password1|bootstrap_horizontal }}
+                        {{ form.password2|bootstrap_horizontal }}
+                        {{ form.birthday|bootstrap_horizontal }}
+                        {{ form.phone|bootstrap_horizontal }}
+                        {% if redirect_field_value %}
+                            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                        {% endif %}
+                    </div>
+                    <div class="row center-content">
+                        <div class="col-sm-1">
+                            <a id="cancel_button" class="font-size-12">{% trans "Cancel" %}</a>
+                        </div>
+                        <div class="col-sm-1 col-sm-offset-8 vcenter">
+                            <button type="submit" class="btn btn-primary gradient" id="signup_button">{% trans "Send" %}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-
+    <br><br>
+    <script>
+        $('.datepicker').datepicker({
+            format: 'mm/dd/yyyy',
+            todayHighlight: true,
+            autoclose: true,
+            clearBtn: true
+        });
+        $('#cancel_button').click(function () {
+            $('#signup_form')[0].reset();
+        });
+    </script>
 {% endblock %}
+

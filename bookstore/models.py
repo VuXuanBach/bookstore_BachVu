@@ -34,15 +34,15 @@ class MyUserManager(BaseUserManager):
 
 
 class MyUser(AbstractBaseUser):
-    AbstractUser
     email = models.EmailField(
         verbose_name='email address',
         max_length=255,
         unique=True,
     )
-    full_name = models.CharField(max_length=30, null=True, blank=True)
-    date_of_birth = models.DateField(blank=True, null=True)
+    full_name = models.CharField(max_length=255, null=True, blank=True)
+    birthday = models.DateField(blank=True, null=True)
     date_joined = models.DateTimeField(default=timezone.now)
+    phone = models.CharField(max_length=30, null=True, blank=True)
 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)

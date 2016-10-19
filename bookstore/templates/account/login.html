@@ -1,35 +1,44 @@
 {% extends "account/base.html" %}
 
 {% load i18n %}
-{% load account socialaccount %}
+{% load bootstrap %}
 
-{% block head_title %}{% trans "Sign In" %}{% endblock %}
+{% block head_title %}{% trans "Login" %}{% endblock %}
 
 {% block content %}
-    <div id="main" class="shell">
-        <h1 id="main_h1">{% trans "Sign In" %}</h1>
-
-        <form class="login" method="POST" action="{% url 'account_login' %}">
-            {% csrf_token %}
-            {{ form.non_field_errors }}
-            <input id="id_login" class="login-input" maxlength="30" name="login" placeholder="Email"
-                   type="text"/>{{ form.login.errors }}<br>
-            <input id="id_password" class="login-input" name="password" placeholder="Password"
-                   type="password"/>{{ form.password.errors }}<br>
-            <div class="remember-forgot-section">
-                <input id="id_remember" name="remember" type="checkbox"/>
-                <label for="id_remember">Remember Me</label>
-                <a class="forgot" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-            </div>
-            {% if redirect_field_value %}
-                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-            {% endif %}
-
-            <button class="btn" type="submit">{% trans "Sign In" %}</button>
-        </form>
-
-        <div class="footnote">
-            Don't have an account? <a href="{% url 'account_signup' %}">Sign Up</a>
+    <div class="container-fluid">
+        <div class="row">
+            <p class="font-weight-bold font-size-14 text-color-orange col-sm-4 col-sm-offset-1">{% trans "Login" %}</p>
+        </div>
+        <div class="row">
+            <p class="font-weight-bold font-size-12 col-sm-4 col-sm-offset-1">{% blocktrans %}Don't
+                have an account? {% endblocktrans %} <a href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a></p>
+        </div>
+        <br>
+        <div class="row">
+            <form class="signup form-horizontal col-sm-4 col-sm-offset-1" id="id_login" method="post" role="form"
+                  action="{% url 'account_login' %}">
+                {% csrf_token %}
+                <div class="container-fluid">
+                    <div class="row well">
+                        {{ form|bootstrap_horizontal }}
+                        {% if redirect_field_value %}
+                            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                        {% endif %}
+                    </div>
+                    <div class="row center-content">
+                        <div class="col-sm-7 remember-forgot-section">
+                            <a class="forgot"
+                               href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                        </div>
+                        <div class="col-sm-5 col-sm-offset-6 vcenter">
+                            <button type="submit" class="btn btn-primary gradient"
+                                    id="login_button">{% trans "Send" %}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
+    <br><br>
 {% endblock %}

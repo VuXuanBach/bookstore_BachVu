@@ -20,4 +20,5 @@ from bookstore.views.index_view import IndexView
 app_name = 'bookstore'
 urlpatterns = [
     url(r'^$', IndexView.as_view(), name='index'),
+    # url(r'^accounts/login/', LoginView.as_view(), name='login'),
 ]

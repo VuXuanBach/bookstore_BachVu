@@ -1,23 +1,69 @@
 {% load static %}
 {% load i18n %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load bootstrap %}
+{% load account socialaccount %}
+
+<!DOCTYPE html>
 <html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
 <head>
     <title>{% block head_title %}{% endblock %}</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{% static 'bookstore/images/favicon.ico' %}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'bookstore/css/style.css' %}" type="text/css" media="all"/>
-    <script type="text/javascript" src="{% static 'bookstore/js/jquery-1.6.2.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'bookstore/js/jquery.jcarousel.min.js' %}"></script>
-    <!--[if IE 6]>
-		<script type="text/javascript" src="{% static 'bookstore/js/png-fix.js' %}"></script>
-	<![endif]-->
-    <script type="text/javascript" src="{% static 'bookstore/js/functions.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'bookstore/css/bootstrap-datepicker.css' %}" type="text/css" media="all"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static 'bookstore/js/bootstrap-datepicker.js' %}"></script>
     {% block extra_head %}
     {% endblock %}
 </head>
 <body>
+<div class="top-nav">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-1">
+                <p class="font-weight-bolder font-size-38"><span
+                        style="color:black">bookstore</span><span style="color:white">.com</span></p>
+            </div>
+            <div class="col-sm-3">
+                {% if user and user.email %}
+                    <a class="btn btn-link" id="base_logout_button" href="{% url 'account_logout' %}">logout</a>
+                {% else %}
+                    <a class="btn btn-link" id="base_login_button" href="{% url 'account_login' %}">login</a>
+                    <a class="btn btn-link" href="{% url 'account_signup' %}">register</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Logo</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Deals</a></li>
+                <li><a href="#">Stores</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 {% block body %}
     {% block base-content %}
     {% endblock %}
@@ -25,30 +71,25 @@
 {% block extra_body %}
 {% endblock %}
 <!-- Footer -->
-<div id="footer" class="shell">
-    <div class="top">
-        <div class="cnt">
-            <div class="col about">
-                <h4>About BookStore</h4>
-                <p>A project to learn Python. Designed by BachVu.</p>
-            </div>
-            <div class="col store">
-                <h4>Store</h4>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Special Offers</a></li>
-                    <li><a href="#">Log In</a></li>
-                    <li><a href="#">Account</a></li>
-                </ul>
-            </div>
-            <div class="cl">&nbsp;</div>
-            <div class="copy">
-                <p>&copy; <a href="#">BestSeller.com</a>. Design by <a href="http://css-free-templates.com/">CSS-FREE-TEMPLATES.COM</a>
-                </p>
-            </div>
-        </div>
+<footer class="container-fluid">
+    <div style="height: 80%; float:top">
+        #left content in here
     </div>
-</div>
+
+    <div style="height: 20%; float:bottom; background-color:#5b4635">
+        #right content in there
+    </div>
+</footer>
 <!-- End Footer -->
+<script>
+    $(document).ready(function () {
+        $(".dropdown").on("hide.bs.dropdown", function () {
+            $(".dropdown-toggle").html('login <span class="caret"></span>');
+        });
+        $(".dropdown").on("show.bs.dropdown", function () {
+            $(".dropdown-toggle").html('login <span class="caret caret-up"></span>');
+        });
+    });
+</script>
 </body>
 </html>
