@@ -8,7 +8,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('bookstore', '0004_auto_20161013_1533'),
+        ('bookstore', '0004_customize_default_django_user_remove_phone_fields'),
     ]
 
     operations = [

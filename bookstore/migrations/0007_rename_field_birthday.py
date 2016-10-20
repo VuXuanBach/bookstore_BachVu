@@ -8,7 +8,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('bookstore', '0006_auto_20161013_1703'),
+        ('bookstore', '0006_alter_field_is_active_to_true'),
     ]
 
     operations = [

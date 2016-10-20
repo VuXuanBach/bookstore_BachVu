@@ -9,7 +9,7 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('bookstore', '0003_auto_20161013_1026'),
+        ('bookstore', '0003_alter_field_birthday'),
     ]
 
     operations = [
