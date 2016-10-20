@@ -17,7 +17,7 @@ class SignUpForm(forms.ModelForm):
                                                                 'class': 'datepicker'})
         self.fields['phone'].widget = forms.TextInput(attrs={'placeholder': 'Phone Number'})
 
-        self.fields['password2'].label = "Confirm Password"
+        self.fields['password2'].label = 'Confirm Password'
 
         self.fields['password1'].validators.append(RegexValidator(
             regex='^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{9,}$',
@@ -31,7 +31,7 @@ class SignUpForm(forms.ModelForm):
             if date.today() > data:
                 return data
             else:
-                raise forms.ValidationError("You must choose a date from the past.")
+                raise forms.ValidationError('You must choose a date from the past.')
         return data
 
     def signup(self, request, user):

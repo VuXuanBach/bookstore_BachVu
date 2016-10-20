@@ -34,5 +34,5 @@ class LoginTest(LiveServerTestCase):
         self.browser.find_element_by_id('id_password').send_keys('test1234561')
         self.browser.find_element_by_id('login_button').click()
 
-        self.assertIn("The e-mail address and/or password you specified are not correct.",
+        self.assertIn('The e-mail address and/or password you specified are not correct.',
                       self.browser.find_element_by_class_name('alert').text)

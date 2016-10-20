@@ -24,4 +24,4 @@ class LogoutTest(LiveServerTestCase):
     def test_can_logout_successfully(self):
         self.browser.find_element_by_id('base_logout_button').click()
 
-        self.assertIn("login", self.browser.find_element_by_id('base_login_button').text)
+        self.assertIn('login', self.browser.find_element_by_id('base_login_button').text)

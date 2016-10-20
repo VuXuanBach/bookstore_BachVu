@@ -247,7 +247,6 @@ footer {
     width:300px;
 }
 .dropdown ul.dropdown-menu:before {
-    content: "";
     border-bottom: 12px solid #fff;
     border-right: 12px solid transparent;
     border-left: 12px solid transparent;
@@ -257,7 +256,6 @@ footer {
     z-index: 10;
 }
 .dropdown ul.dropdown-menu:after {
-    content: "";
     border-bottom: 12px solid #ccc;
     border-right: 12px solid transparent;
     border-left: 12px solid transparent;

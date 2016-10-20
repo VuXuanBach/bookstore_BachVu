@@ -13,4 +13,4 @@ class CommentMethodTests(TestCase):
                                    publisher_name='Vu', published_at=now, unit_price=50000,
                                    photo='google.com', rating_count=1, rating_value=10)
         comment = Comment.objects.create(rating=1, content='good', user=user, book=book, commented_at=now)
-        self.assertEqual(str(comment), "good")
+        self.assertEqual(str(comment), 'good')
