@@ -1,25 +1,22 @@
 from allauth.account.models import EmailAddress
-from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
-from django.test import LiveServerTestCase
-from selenium import webdriver
+
+from bookstore.tests.factories.factory_user import UserFactory
+from bookstore.tests.features.test_base import BaseTest, faker
 
 
-class LoginTest(LiveServerTestCase):
+class LoginTest(BaseTest):
     def setUp(self):
-        self.browser = webdriver.Firefox()
-        self.browser.implicitly_wait(10)
-        user = get_user_model().objects.create_user(email='test@ea.com', password='test123456')
-        user.save()
+        super(LoginTest, self).setUp()
+
+        user = UserFactory(email=faker.login_email())
         EmailAddress.objects.create(user=user, verified=True)
+
         self.browser.get(self.live_server_url + '/accounts/login/')
 
-    def tearDown(self):
-        self.browser.quit()
-
     def test_can_login_successfully(self):
-        self.browser.find_element_by_id('id_login').send_keys('test@ea.com')
-        self.browser.find_element_by_id('id_password').send_keys('test123456')
+        self.browser.find_element_by_id('id_login').send_keys(faker.login_email())
+        self.browser.find_element_by_id('id_password').send_keys(faker.login_password())
         self.browser.find_element_by_id('login_button').click()
 
         self.assertIn("logout", self.browser.find_element_by_id('base_logout_button').text)
@@ -30,8 +27,8 @@ class LoginTest(LiveServerTestCase):
         self.assertRaises(ValidationError)
 
     def test_login_with_incorrect_information(self):
-        self.browser.find_element_by_id('id_login').send_keys('test1@ea.com')
-        self.browser.find_element_by_id('id_password').send_keys('test1234561')
+        self.browser.find_element_by_id('id_login').send_keys(faker.invalid_login_email())
+        self.browser.find_element_by_id('id_password').send_keys(faker.invalid_login_password())
         self.browser.find_element_by_id('login_button').click()
 
         self.assertIn('The e-mail address and/or password you specified are not correct.',

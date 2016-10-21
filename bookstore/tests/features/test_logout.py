@@ -1,17 +1,14 @@
-from django.contrib.auth import get_user_model
-from django.test import LiveServerTestCase
-from selenium import webdriver
+from bookstore.tests.factories.factory_user import UserFactory
+from bookstore.tests.features.test_base import BaseTest, faker
 
 
-class LogoutTest(LiveServerTestCase):
+class LogoutTest(BaseTest):
     def setUp(self):
-        self.browser = webdriver.Firefox()
-        self.browser.implicitly_wait(10)
+        super(LogoutTest, self).setUp()
 
-        user = get_user_model().objects.create_user(email='test@ea.com', password='test123456')
-        user.save()
+        UserFactory(email=faker.login_email())
 
-        self.client.login(username='test@ea.com', password='test123456')
+        self.client.login(username=faker.login_email(), password=faker.login_password())
         cookie = self.client.cookies['sessionid']
         self.browser.get(self.live_server_url + '/bookstore/')
         self.browser.add_cookie({'name': 'sessionid', 'value': cookie.value, 'secure': False, 'path': '/'})
