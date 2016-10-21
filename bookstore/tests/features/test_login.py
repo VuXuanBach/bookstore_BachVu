@@ -12,7 +12,7 @@ class LoginTest(BaseTest):
         user = UserFactory(email=faker.login_email())
         EmailAddress.objects.create(user=user, verified=True)
 
-        self.browser.get(self.live_server_url + '/accounts/login/')
+        self.browser.get('{}{}'.format(self.live_server_url, '/accounts/login/'))
 
     def test_can_login_successfully(self):
         self.browser.find_element_by_id('id_login').send_keys(faker.login_email())

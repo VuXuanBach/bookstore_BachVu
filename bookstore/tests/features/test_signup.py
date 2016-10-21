@@ -9,7 +9,7 @@ class SignupTest(BaseTest):
     def setUp(self):
         super(SignupTest, self).setUp()
 
-        self.browser.get(self.live_server_url + '/accounts/signup/')
+        self.browser.get('{}{}'.format(self.live_server_url, '/accounts/signup/'))
 
     def test_can_signup_successfully(self):
         self.browser.find_element_by_id('id_email').send_keys(faker.email())
@@ -22,12 +22,17 @@ class SignupTest(BaseTest):
         self.assertIn('[BookStore] Please Confirm Your E-mail Address', mail.outbox[0].subject)
 
     def test_can_signup_successfully_with_all_fields_filled(self):
-        self.browser.find_element_by_id('id_email').send_keys(faker.email())
-        self.browser.find_element_by_id('id_password1').send_keys(faker.login_password())
-        self.browser.find_element_by_id('id_password2').send_keys(faker.login_password())
-        self.browser.find_element_by_id('id_full_name').send_keys(faker.name())
-        self.browser.find_element_by_id('id_birthday').send_keys(faker.past_date())
-        self.browser.find_element_by_id('id_phone').send_keys(faker.phone_number())
+        data = {
+            'id_email': faker.email(),
+            'id_password1': faker.login_password(),
+            'id_password2': faker.login_password(),
+            'id_full_name': faker.name(),
+            'id_birthday': faker.past_date(),
+            'id_phone': faker.phone_number(),
+        }
+        for k, value in data.items():
+            self.browser.find_element_by_id(k).send_keys(value)
+
         self.browser.find_element_by_id('signup_button').click()
 
         self.assertIn('Verify Your E-mail Address', self.browser.find_element_by_id('verification_title').text)
