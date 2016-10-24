@@ -264,3 +264,14 @@ footer {
     right: 196px;
     z-index: 9;
 }
+
+.verification-title {
+    font-weight: bold;
+    font-size: 14pt;
+    color: #fdb62b;
+}
+
+.verification-sub-title {
+    font-weight: bold;
+    font-size: 12pt;
+}

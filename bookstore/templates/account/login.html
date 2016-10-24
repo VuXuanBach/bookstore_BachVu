@@ -8,10 +8,10 @@
 {% block content %}
     <div class="container-fluid">
         <div class="row">
-            <p class="font-weight-bold font-size-14 text-color-orange col-sm-4 col-sm-offset-1">{% trans "Login" %}</p>
+            <p class="verification-title col-sm-4 col-sm-offset-1">{% trans "Login" %}</p>
         </div>
         <div class="row">
-            <p class="font-weight-bold font-size-12 col-sm-4 col-sm-offset-1">{% blocktrans %}Don't
+            <p class="verification-sub-title col-sm-4 col-sm-offset-1">{% blocktrans %}Don't
                 have an account? {% endblocktrans %} <a href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a></p>
         </div>
         <br>

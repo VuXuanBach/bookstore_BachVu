@@ -1,9 +1,9 @@
 from django.test import TestCase
 
-from bookstore.models import Category
+from bookstore.tests.factories.factory_category import CategoryFactory
 
 
 class CategoryMethodTests(TestCase):
     def test_str(self):
-        category = Category.objects.create(name='Science', sort_order=0)
+        category = CategoryFactory(name='Science')
         self.assertEqual(str(category), 'Science')

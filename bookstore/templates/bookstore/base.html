@@ -28,7 +28,7 @@
                         style="color:black">bookstore</span><span style="color:white">.com</span></p>
             </div>
             <div class="col-sm-3">
-                {% if user and user.email %}
+                {% if user.email %}
                     <a class="btn btn-link" id="base_logout_button" href="{% url 'account_logout' %}">logout</a>
                 {% else %}
                     <a class="btn btn-link" id="base_login_button" href="{% url 'account_login' %}">login</a>

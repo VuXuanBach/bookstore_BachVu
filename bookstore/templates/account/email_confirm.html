@@ -10,12 +10,12 @@
 {% block content %}
     <div class="container-fluid">
         <div class="row">
-            <p class="font-weight-bold font-size-14 text-color-orange col-sm-4 col-sm-offset-1">{% trans "Confirm E-mail Address" %}</p>
+            <p class="verification-title col-sm-4 col-sm-offset-1">{% trans "Confirm E-mail Address" %}</p>
         </div>
         {% if confirmation %}
             {% user_display confirmation.email_address.user as user_display %}
             <div class="row">
-                <p class="font-weight-bold font-size-12 col-sm-4 col-sm-offset-1">
+                <p class="verification-sub-title col-sm-4 col-sm-offset-1">
                     {% blocktrans with confirmation.email_address.email as email %}Please confirm that
                         <a href="mailto:{{ email }}">{{ email }}</a> is an e-mail address for user {{ user_display }}
                         .{% endblocktrans %}</p>
@@ -30,7 +30,7 @@
         {% else %}
             {% url 'account_email' as email_url %}
             <div class="row">
-                <p class="font-weight-bold font-size-12 col-sm-4 col-sm-offset-1">{% blocktrans %}This e-mail
+                <p class="verification-sub-title col-sm-4 col-sm-offset-1">{% blocktrans %}This e-mail
                     confirmation link expired or is invalid. Please
                     <a href="{{ email_url }}">issue a new e-mail confirmation request</a>.{% endblocktrans %}</p>
             </div>

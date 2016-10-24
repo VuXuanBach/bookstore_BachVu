@@ -30,8 +30,7 @@ class SignUpForm(forms.ModelForm):
         if data:
             if date.today() > data:
                 return data
-            else:
-                raise forms.ValidationError('You must choose a date from the past.')
+            raise forms.ValidationError('You must choose a date from the past.')
         return data
 
     def signup(self, request, user):

@@ -9,25 +9,25 @@
     <div class="container-fluid">
         <div class="row">
             <p id="verification_title"
-               class="font-weight-bold font-size-14 text-color-orange col-sm-4 col-sm-offset-1">{% trans "Verify Your E-mail Address" %}</p>
+               class="verification-title col-sm-4 col-sm-offset-1">{% trans "Verify Your E-mail Address" %}</p>
         </div>
         <div class="row">
             {% url 'account_email' as email_url %}
         </div>
         <div class="row">
-            <p class="font-weight-bold font-size-12 col-sm-5 col-sm-offset-1">{% blocktrans %}This part of the site
+            <p class="verification-sub-title col-sm-5 col-sm-offset-1">{% blocktrans %}This part of the site
                 requires us to verify that
                 you are who you claim to be. For this purpose, we require that you
                 verify ownership of your e-mail address. {% endblocktrans %}</p>
         </div>
         <div class="row">
-            <p class="font-weight-bold font-size-12 col-sm-5 col-sm-offset-1">{% blocktrans %}We have sent an e-mail to
+            <p class="verification-sub-title col-sm-5 col-sm-offset-1">{% blocktrans %}We have sent an e-mail to
                 you for
                 verification. Please click on the link inside this e-mail. Please
                 contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
         </div>
         <div class="row">
-            <p class="font-weight-bold font-size-12 col-sm-5 col-sm-offset-1">{% blocktrans %}<strong>Note:</strong> you
+            <p class="verification-sub-title col-sm-5 col-sm-offset-1">{% blocktrans %}<strong>Note:</strong> you
                 can still
                 <a href="{{ email_url }}">change your e-mail address</a>
                 .{% endblocktrans %}</p>
