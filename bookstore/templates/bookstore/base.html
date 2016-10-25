@@ -29,7 +29,18 @@
             </div>
             <div class="col-sm-3">
                 {% if user.email %}
-                    <a class="btn btn-link" id="base_logout_button" href="{% url 'account_logout' %}">logout</a>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" id="base_user_email_toggle" type="button"
+                           data-toggle="dropdown">{{ user.email }}
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="btn btn-link" id="base_edit_profile"
+                                   href="{% url 'bookstore:edit_profile' %}">{% trans "Edit profile" %}</a>
+                            </li>
+                            <li><a class="btn btn-link" id="base_logout_button"
+                                   href="{% url 'account_logout' %}">{% trans "Logout" %}</a></li>
+                        </ul>
+                    </div>
                 {% else %}
                     <a class="btn btn-link" id="base_login_button" href="{% url 'account_login' %}">login</a>
                     <a class="btn btn-link" href="{% url 'account_signup' %}">register</a>
@@ -84,10 +95,10 @@
 <script>
     $(document).ready(function () {
         $(".dropdown").on("hide.bs.dropdown", function () {
-            $(".dropdown-toggle").html('login <span class="caret"></span>');
+            $(".dropdown-toggle").html('{{ user.email }} <span class="caret"></span>');
         });
         $(".dropdown").on("show.bs.dropdown", function () {
-            $(".dropdown-toggle").html('login <span class="caret caret-up"></span>');
+            $(".dropdown-toggle").html('{{ user.email }} <span class="caret caret-up"></span>');
         });
     });
 </script>

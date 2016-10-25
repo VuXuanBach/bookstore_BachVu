@@ -41,12 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     'django_nose',
-    'bootstrapform',
 
     'bookstore.apps.BookstoreConfig',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'bootstrapform',
 ]
 
 MIDDLEWARE = [
@@ -149,6 +149,7 @@ DATE_INPUT_FORMATS = '%d-%m-%y'
 
 # Custom user model + Allauth
 AUTH_USER_MODEL = 'bookstore.MyUser'
+
 # ACCOUNT_ADAPTER = 'bookstore.adapters.AccountAdapter'
 ACCOUNT_SIGNUP_FORM_CLASS = "bookstore.forms.SignUpForm"
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None

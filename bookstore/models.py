@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import RegexValidator
 from django.db import models
 
 # Create your models here.
@@ -42,7 +43,13 @@ class MyUser(AbstractBaseUser):
     full_name = models.CharField(max_length=255, null=True, blank=True)
     birthday = models.DateField(blank=True, null=True)
     date_joined = models.DateTimeField(default=timezone.now)
-    phone = models.CharField(max_length=30, null=True, blank=True)
+    phone = models.CharField(max_length=30, null=True, blank=True, validators=[
+        RegexValidator(
+            regex='^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$',
+            message='Please enter a valid phone number.',
+            code='invalid_phone'
+        ),
+    ])
 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)

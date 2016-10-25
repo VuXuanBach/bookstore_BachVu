@@ -8,9 +8,10 @@ class LogoutTest(BaseTest):
     def setUp(self):
         super(LogoutTest, self).setUp()
 
-        UserFactory(email=faker.login_email())
+        self.login_email = faker.login_email()
+        UserFactory(email=self.login_email)
 
-        self.client.login(username=faker.login_email(), password=faker.login_password())
+        self.client.login(username=self.login_email, password=faker.login_password())
         cookie = self.client.cookies['sessionid']
         index_url = '{}{}'.format(self.live_server_url, reverse('bookstore:index'))
         self.browser.get(index_url)
@@ -22,6 +23,7 @@ class LogoutTest(BaseTest):
         self.browser.quit()
 
     def test_can_logout_successfully(self):
+        self.browser.find_element_by_id('base_user_email_toggle').click()
         self.browser.find_element_by_id('base_logout_button').click()
 
         self.assertIn('login', self.browser.find_element_by_id('base_login_button').text)

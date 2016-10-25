@@ -15,7 +15,7 @@ class SignUpForm(forms.ModelForm):
         self.fields['password2'].widget = forms.PasswordInput(attrs={'placeholder': 'Retype the password'})
         self.fields['birthday'].widget = forms.DateInput(attrs={'placeholder': 'Select a date', 'type': 'date',
                                                                 'class': 'datepicker'})
-        self.fields['phone'].widget = forms.TextInput(attrs={'placeholder': 'Phone Number'})
+        self.fields['phone'].widget = forms.TextInput(attrs={'placeholder': 'Phone number'})
 
         self.fields['password2'].label = 'Confirm Password'
 

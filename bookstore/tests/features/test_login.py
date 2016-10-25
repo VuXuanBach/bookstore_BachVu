@@ -19,7 +19,7 @@ class LoginTest(BaseTest):
         self.browser.find_element_by_id('id_password').send_keys(faker.login_password())
         self.browser.find_element_by_id('login_button').click()
 
-        self.assertIn("logout", self.browser.find_element_by_id('base_logout_button').text)
+        self.assertIn(self.user.email, self.browser.find_element_by_id('base_user_email_toggle').text)
 
     def test_login_with_empty_field(self):
         self.browser.find_element_by_id('login_button').click()

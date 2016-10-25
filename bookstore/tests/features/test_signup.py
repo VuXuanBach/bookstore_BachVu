@@ -45,9 +45,10 @@ class SignupTest(BaseTest):
         self.assertRaises(ValidationError)
 
     def test_signup_with_existing_email(self):
-        UserFactory(email=faker.login_email())
+        user_email = faker.email()
+        UserFactory(email=user_email)
 
-        self.browser.find_element_by_id('id_email').send_keys(faker.login_email())
+        self.browser.find_element_by_id('id_email').send_keys(user_email)
         self.browser.find_element_by_id('id_password1').send_keys(faker.login_password())
         self.browser.find_element_by_id('id_password2').send_keys(faker.login_password())
         self.browser.find_element_by_id('signup_button').click()
@@ -56,11 +57,21 @@ class SignupTest(BaseTest):
                       self.browser.find_element_by_class_name('help-block').text)
 
     def test_signup_with_future_birthday(self):
-        self.browser.find_element_by_id('id_email').send_keys(faker.login_email())
+        self.browser.find_element_by_id('id_email').send_keys(faker.email())
         self.browser.find_element_by_id('id_password1').send_keys(faker.login_password())
         self.browser.find_element_by_id('id_password2').send_keys(faker.login_password())
         self.browser.find_element_by_id('id_birthday').send_keys(faker.future_date())
         self.browser.find_element_by_id('signup_button').click()
 
         self.assertIn('You must choose a date from the past.',
+                      self.browser.find_element_by_class_name('help-block').text)
+
+    def test_signup_with_invalid_phone(self):
+        self.browser.find_element_by_id('id_email').send_keys(faker.email())
+        self.browser.find_element_by_id('id_password1').send_keys(faker.login_password())
+        self.browser.find_element_by_id('id_password2').send_keys(faker.login_password())
+        self.browser.find_element_by_id('id_phone').send_keys('something')
+        self.browser.find_element_by_id('signup_button').click()
+
+        self.assertIn('Please enter a valid phone number.',
                       self.browser.find_element_by_class_name('help-block').text)
