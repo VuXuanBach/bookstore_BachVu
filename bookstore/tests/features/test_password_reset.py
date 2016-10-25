@@ -8,8 +8,8 @@ class PasswordResetTest(BaseTest):
     def setUp(self):
         super(PasswordResetTest, self).setUp()
 
-        user = UserFactory(email=faker.login_email())
-        EmailAddress.objects.create(user=user, verified=True)
+        self.user = UserFactory(email=faker.login_email())
+        EmailAddress.objects.create(user=self.user, verified=True)
 
         self.browser.get('{}{}'.format(self.live_server_url, '/accounts/password/reset/'))
 
@@ -17,7 +17,7 @@ class PasswordResetTest(BaseTest):
         self.browser.quit()
 
     def test_can_reset_password_successfully(self):
-        self.browser.find_element_by_id('id_email').send_keys(faker.login_email())
+        self.browser.find_element_by_id('id_email').send_keys(self.user.email)
         self.browser.find_element_by_id('reset_password_button').click()
 
         self.assertIn(
@@ -25,7 +25,7 @@ class PasswordResetTest(BaseTest):
             self.browser.find_element_by_id('verification_content').text)
 
     def test_reset_password_with_invalid_email(self):
-        self.browser.find_element_by_id('id_email').send_keys('something@ea.com')
+        self.browser.find_element_by_id('id_email').send_keys(faker.invalid_login_email())
         self.browser.find_element_by_id('reset_password_button').click()
 
         self.assertIn('The e-mail address is not assigned to any user account',
