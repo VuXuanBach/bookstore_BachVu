@@ -3,4 +3,9 @@
 
 require File.expand_path('../config/application', __FILE__)
 
+if ENV['CIRCLE_ARTIFACTS']
+  require 'coveralls/rake/task'
+  Coveralls::RakeTask.new
+end
+
 Rails.application.load_tasks

@@ -50,6 +50,8 @@ group :test do
   gem 'database_cleaner'
   gem 'rspec-its'
   gem 'shoulda-matchers'
+  gem 'coveralls', require: false
+  gem 'simplecov', require: false
 end
 
 # bundle exec rake doc:rails generates the API under doc/api.
