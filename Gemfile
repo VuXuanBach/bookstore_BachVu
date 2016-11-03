@@ -26,6 +26,7 @@ gem 'faker'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'rails_admin', '~> 1.0'
+gem 'haml'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -57,9 +58,4 @@ end
 # bundle exec rake doc:rails generates the API under doc/api.
 group :doc do
   gem 'sdoc', '~> 0.4.0', require: false
-end
-
-group :production do
-  gem 'pg', '0.15.1'
-  gem 'rails_12factor', '0.0.2'
 end

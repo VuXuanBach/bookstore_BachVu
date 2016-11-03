@@ -3,5 +3,5 @@ Given(/^a user visits admin page$/) do
 end
 
 Then(/^they should see Site Administration$/) do
-  page.should have_content('Site Administration')
+  expect(page).to have_content('Site Administration')
 end
