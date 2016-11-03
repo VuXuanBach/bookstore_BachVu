@@ -1,4 +1,4 @@
-Given(/^a user visits admin page$/) do
+Given(/^a user visiting admin page$/) do
   visit rails_admin.dashboard_path
 end
 
