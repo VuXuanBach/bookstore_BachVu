@@ -1,7 +1,7 @@
-Given(/^a user visiting admin page$/) do
+Given(/^I visit admin page$/) do
   visit rails_admin.dashboard_path
 end
 
-Then(/^they should see Site Administration$/) do
+Then(/^I should see Site Administration$/) do
   expect(page).to have_content('Site Administration')
 end

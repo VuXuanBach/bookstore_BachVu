@@ -1,5 +1,5 @@
 Feature: Admin site
 
   Scenario: Visit admin site
-    Given a user visiting admin page
-    Then they should see Site Administration
+    Given I visit admin page
+    Then I should see Site Administration
