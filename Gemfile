@@ -41,6 +41,7 @@ gem 'haml'
 group :development, :test do
   gem 'pg'
   gem 'rspec-rails', '>=2.13.1'
+  gem "erb2haml"
 end
 
 group :test do
