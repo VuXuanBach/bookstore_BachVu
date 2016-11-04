@@ -1,0 +1,32 @@
+.container-fluid
+  .row
+    %p.verification-title.col-sm-4.col-sm-offset-1 Login
+  .row
+    %p.verification-sub-title.col-sm-4.col-sm-offset-1
+      Don't have an account?
+      %a= link_to 'Sign Up', new_user_registration_path
+  %br/
+  .row
+    = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal col-sm-4 col-sm-offset-1'}) do |f|
+      .container-fluid
+        .row.well
+          .form-group
+            = f.label :email, class: 'control-label col-sm-2 col-lg-2'
+            .col-sm-10.col-lg-10
+              = f.email_field :email, autofocus: true, placeholder: 'E-mail address', class: 'form-control'
+
+          .form-group
+            = f.label :password, class: 'control-label col-sm-2 col-lg-2'
+            .col-sm-10.col-lg-10
+              = f.password_field :password, autocomplete: "off", placeholder: 'Password', class: 'form-control'
+
+          - if devise_mapping.rememberable?
+            .col-sm-offset-2.col-sm-10.col-lg-offset-2.col-lg-10
+              = f.check_box :remember_me
+              = f.label :remember_me
+
+        .row.center-content
+          .col-sm-7.remember-forgot-section
+            %a.forgot= link_to 'Forgot Password?', new_user_password_path
+          .col-sm-5.col-sm-offset-6.vcenter
+            = f.submit 'Send', class: 'btn btn-primary gradient'
