@@ -41,6 +41,6 @@
 
         .row.center-content
           .col-sm-1
-            = cancel_link
+            = submit_tag "Cancel", type: 'reset', class: 'inputsubmit btn-link font-size-12'
           .col-sm-1.col-sm-offset-8.vcenter
             = f.submit 'Send', class: 'btn btn-primary gradient'

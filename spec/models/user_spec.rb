@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  fake_password = Faker::Internet.password(8)
-  before { @user = User.new(email: Faker::Internet.email,
-                           password: fake_password, password_confirmation: fake_password) }
+  before { @user = create(:user) }
+
   subject { @user }
 
   describe 'phone validation' do
@@ -19,7 +18,7 @@ RSpec.describe User, type: :model do
     [Faker::Date.backward(100)].each do |valid|
       it { is_expected.to allow_value(valid).for(:birthday) }
     end
-    [Time.now, Faker::Date.forward(23)].each do |invalid|
+    [Time.now, Faker::Date.forward(23), Date.current - 150.years].each do |invalid|
       it { is_expected.not_to allow_value(invalid).for(:birthday) }
     end
   end

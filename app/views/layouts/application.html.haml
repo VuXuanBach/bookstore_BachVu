@@ -12,12 +12,12 @@
     .row
       .col-sm-8.col-sm-offset-1
         %p.font-weight-bolder.font-size-38
-          %span{:style => "color:black"} bookstore
-          %span{:style => "color:white"} .com
+          %span.text-color-black bookstore
+          %span.text-color-white .com
       .col-sm-3
         - if user_signed_in?
           .dropdown
-            %a#base_user_email_toggle.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+            %a#base_user_email_toggle.dropdown-toggle{ "data-toggle" => "dropdown", type: "button" }
               = current_user.email
               %span.caret
             %ul.dropdown-menu
@@ -32,7 +32,7 @@
 %nav.navbar.navbar-inverse
   .container-fluid
     .navbar-header
-      %button.navbar-toggle{"data-target" => "#myNavbar", "data-toggle" => "collapse", :type => "button"}
+      %button.navbar-toggle{ "data-target" => "#myNavbar", "data-toggle" => "collapse", type: "button" }
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
@@ -40,22 +40,22 @@
     #myNavbar.collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li.active
-          %a{:href => "#"} Home
+          %a{href: "#"} Home
         %li
-          %a{:href => "#"} Products
+          %a{ href: "#" } Products
         %li
-          %a{:href => "#"} Deals
+          %a{ href: "#" } Deals
         %li
-          %a{:href => "#"} Stores
+          %a{ href: "#" } Stores
         %li
-          %a{:href => "#"} Contact
+          %a{ href: "#" } Contact
       %ul.nav.navbar-nav.navbar-right
         %li
-          %a{:href => "#"}
+          %a{ href: "#" }
             %span.glyphicon.glyphicon-user
             Your Account
         %li
-          %a{:href => "#"}
+          %a{ href: "#" }
             %span.glyphicon.glyphicon-shopping-cart
             Cart
 

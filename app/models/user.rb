@@ -7,11 +7,12 @@ class User < ActiveRecord::Base
   VALID_PHONE_REGEX = /\A(\+\d)*\s*(\(\d{3}\)\s*)*\d{3}(-{0,1}|\s{0,1})\d{2}(-{0,1}|\s{0,1})\d{2}/
   validates :phone, format: { with: VALID_PHONE_REGEX }, allow_blank: true
 
-  validates_each :birthday do |record, attr, value|
-    record.errors.add(attr, 'Birthday must be in the past') if value && value >= Time.now.to_date
-  end
+  validate :birthday_cannot_be_in_future_and_in_past_150_years
 
-  validates_each :birthday do |record, attr, value|
-    record.errors.add(attr, 'Birthdat must be less than 150 years in the past') if value && value <= (Time.now.to_date - 125.years)
+  private
+
+  def birthday_cannot_be_in_future_and_in_past_150_years
+    errors.add(:birthday, 'Birthday must be in the past and less than 150 years') if
+    birthday and (birthday >= Date.current or birthday <= (Date.current - 150.years))
   end
 end

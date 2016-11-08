@@ -13,9 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import 'bootstrap/theme';
+@import 'variables';
 
 .alert-alert {
   @extend .alert-warning;
@@ -34,11 +36,11 @@
 body {
   line-height: 18px;
   font-family: Open Sans;
-  color: #383838;
+  color: $mine-shaft;
 }
 
 a {
-  color: #0252aa;
+  color: $endeavour;
   text-decoration: none;
   cursor: pointer;
   &:hover {
@@ -50,7 +52,7 @@ a {
 }
 
 input, textarea, select {
-  font-size: 10px;
+  font-size: 10pt;
   font-family: arial, sans-serif;
 }
 
@@ -62,12 +64,12 @@ input {
   &[type='password'], &[type='text'], &[type='date'], &[type='number'], &[type='email'] {
     -moz-box-sizing: border-box;
     padding: 5px 10px;
-    font-size: 16px;
+    font-size: 12pt;
   }
 }
 
 footer {
-  background-color: #62594f;
+  background-color: $soya-bean;
   color: white;
   padding: 0;
 }
@@ -92,7 +94,7 @@ footer {
 }
 
 .sub-footer {
-  background-color: #5b4635;
+  background-color: $millbrook;
   display: table-cell;
   vertical-align: bottom;
 }
@@ -136,7 +138,7 @@ footer {
 .remember-forgot-section {
   text-align: left;
   margin: 8px auto;
-  font-size: 12px;
+  font-size: 10pt;
 }
 
 .forgot {
@@ -146,7 +148,7 @@ footer {
 .footnote {
   text-align: left;
   margin: 8px auto;
-  font-size: 14px;
+  font-size: 12pt;
 }
 
 .font-size-38 {
@@ -182,7 +184,15 @@ footer {
 }
 
 .text-color-orange {
-  color: #fdb62b;
+  color: $bookstore-orange;
+}
+
+.text-color-white {
+  color: $white;
+}
+
+.text-color-black {
+  color: $black;
 }
 
 .center-content {
@@ -192,12 +202,12 @@ footer {
 
 .btn {
   padding: 10px 30px;
-  border: 0 none;
+  border: 0;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
   &:focus, &:active:focus, &.active:focus {
-    outline: 0 none;
+    outline: 0;
   }
 }
 
@@ -208,107 +218,75 @@ footer {
 }
 
 .btn-primary {
-  background: #fdb62b;
-  color: #ffffff;
+  background: $bookstore-orange;
+  color: $white;
   &:hover, &:focus, &:active, &.active {
-    background: #FAC722;
+    background: $lightning-yellow;
   }
 }
 
 .open > .dropdown-toggle.btn-primary {
-  background: #FAC722;
+  background: $lightning-yellow;
 }
 
 .btn-primary {
   &:active, &.active {
-    background: #D48E1C;
+    background: $geebung;
     box-shadow: none;
   }
   &:hover, &:focus, &:active, &.active {
-    color: #fff;
-    background-color: #CE9708;
-    border-color: #D48E1C;
+    color: $white;
+    background-color: $buddha-gold;
+    border-color: $geebung;
   }
 }
 
 .open .dropdown-toggle.btn-primary {
-  color: #fff;
-  background-color: #CE9708;
-  border-color: #D48E1C;
+  color: $white;
+  background-color: $buddha-gold;
+  border-color: $geebung;
 }
 
 .btn-primary.gradient {
-  background: -moz-linear-gradient(top, #ffc400 50%, #fdb62b 50%);
-  /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #ffc400), color-stop(50%, #fdb62b));
-  /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #ffc400 50%, #fdb62b 50%);
-  /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #ffc400 50%, #fdb62b 50%);
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #ffc400 50%, #fdb62b 50%);
-  /* IE10+ */
-  background: linear-gradient(to bottom, #ffc400 50%, #fdb62b 50%);
-  /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc400', endColorstr='#fdb62b', GradientType=0);
-  /* IE6-9 */
-  &:hover, &:focus, &:active, &.active {
-    background: -moz-linear-gradient(top, #FED00A 50%, #FAC722 50%);
-    /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #FED00A), color-stop(50%, #FAC722));
-    /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #FED00A 50%, #FAC722 50%);
-    /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #FED00A 50%, #FAC722 50%);
-    /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #FED00A 50%, #FAC722 50%);
-    /* IE10+ */
-    background: linear-gradient(to bottom, #FED00A 50%, #FAC722 50%);
-    /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FED00A', endColorstr='#FAC722', GradientType=0);
-    /* IE6-9 */
+  background: linear-gradient(to bottom, $amber 50%, $bookstore-orange 50%);
+  filter: progid:dximagetransform.microsoft.gradient(startcolorstr='$amber', endcolorstr='$bookstore-orange', gradienttype=0);
+  &:hover {
+    background: linear-gradient(to bottom, $supernova 50%, $lightning-yellow 50%);
+    filter: progid:dximagetransform.microsoft.gradient(startcolorstr='$supernova', endcolorstr='$lightning-yellow', gradienttype=0);
+  }
+  &:focus {
+    background: linear-gradient(to bottom, $supernova 50%, $lightning-yellow 50%);
+    filter: progid:dximagetransform.microsoft.gradient(startcolorstr='$supernova', endcolorstr='$lightning-yellow', gradienttype=0);
+  }
+  &:active {
+    background: linear-gradient(to bottom, $supernova 50%, $lightning-yellow 50%);
+    filter: progid:dximagetransform.microsoft.gradient(startcolorstr='$supernova', endcolorstr='$lightning-yellow', gradienttype=0);
+    background: linear-gradient(to bottom, $buddha-gold 50%, $geebung 50%);
+    filter: progid:dximagetransform.microsoft.gradient(startcolorstr='$buddha-gold', endcolorstr='$geebung', gradienttype=0);
+  }
+  &.active {
+    background: linear-gradient(to bottom, $supernova 50%, $lightning-yellow 50%);
+    filter: progid:dximagetransform.microsoft.gradient(startcolorstr='$supernova', endcolorstr='$ightning-yellow', gradienttype=0);
+    background: linear-gradient(to bottom, $buddha-gold 50%, $geebung 50%);
+    filter: progid:dximagetransform.microsoft.gradient(startcolorstr='$buddha-gold', endcolorstr='$geebung', gradienttype=0);
   }
 }
-
 .open > .dropdown-toggle.btn-primary {
-  background: -moz-linear-gradient(top, #FED00A 50%, #FAC722 50%);
-  /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #FED00A), color-stop(50%, #FAC722));
-  /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #FED00A 50%, #FAC722 50%);
-  /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #FED00A 50%, #FAC722 50%);
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #FED00A 50%, #FAC722 50%);
-  /* IE10+ */
-  background: linear-gradient(to bottom, #FED00A 50%, #FAC722 50%);
-  /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FED00A', endColorstr='#FAC722', GradientType=0);
-  /* IE6-9 */
-}
-
-.btn-primary.gradient {
-  &:active, &.active {
-    background: -moz-linear-gradient(top, #CE9708 50%, #D48E1C 50%);
-    /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #CE9708), color-stop(50%, #D48E1C));
-    /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #CE9708 50%, #D48E1C 50%);
-    /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #CE9708 50%, #D48E1C 50%);
-    /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #CE9708 50%, #D48E1C 50%);
-    /* IE10+ */
-    background: linear-gradient(to bottom, #CE9708 50%, #D48E1C 50%);
-    /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#CE9708', endColorstr='#D48E1C', GradientType=0);
-    /* IE6-9 */
-  }
+  background: linear-gradient(to bottom, $supernova 50%, $lightning-yellow 50%);
+  filter: progid:dximagetransform.microsoft.gradient(startcolorstr='$supernova', endcolorstr='$lightning-yellow', gradienttype=0);
 }
 
 .caret.caret-up {
   border-top-width: 0;
-  border-bottom: 4px solid #fff;
+  border-bottom: 4px solid $white;
+}
+
+.dropdown-state {
+  border-right: 12px solid transparent;
+  border-left: 12px solid transparent;
+  position: absolute;
+  top: -12px;
+  right: 196px;
 }
 
 .dropdown ul.dropdown-menu {
@@ -317,21 +295,13 @@ footer {
   margin-top: 20px;
   width: 300px;
   &:before {
-    border-bottom: 12px solid #fff;
-    border-right: 12px solid transparent;
-    border-left: 12px solid transparent;
-    position: absolute;
-    top: -12px;
-    right: 196px;
+    @extend .dropdown-state;
+    border-bottom: 12px solid $white;
     z-index: 10;
   }
   &:after {
-    border-bottom: 12px solid #ccc;
-    border-right: 12px solid transparent;
-    border-left: 12px solid transparent;
-    position: absolute;
-    top: -12px;
-    right: 196px;
+    @extend .dropdown-state;
+    border-bottom: 12px solid $silver;
     z-index: 9;
   }
 }
@@ -339,7 +309,7 @@ footer {
 .verification-title {
   font-weight: bold;
   font-size: 14pt;
-  color: #fdb62b;
+  color: $bookstore-orange;
 }
 
 .verification-sub-title {

@@ -7,7 +7,6 @@ require 'simplecov'
 # files.
 
 require 'cucumber/rails'
-require 'selenium-webdriver'
 require 'sidekiq/testing'
 
 # Capybara defaults to CSS3 selectors rather than XPath.
@@ -68,3 +67,5 @@ Capybara.default_driver = :selenium
 Capybara.javascript_driver = :selenium
 
 Sidekiq::Testing.fake!
+
+World(FactoryGirl::Syntax::Methods)
