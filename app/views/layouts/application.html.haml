@@ -19,49 +19,51 @@
           .dropdown
             %a#base_user_email_toggle.dropdown-toggle{ "data-toggle" => "dropdown", type: "button" }
               = current_user.email
-              %span.caret
+              %span.caret.glyphicon
             %ul.dropdown-menu
               %li
-                %a#base_edit_profile.btn.btn-link= link_to 'Profile', edit_user_registration_path
+                =link_to 'Profile', edit_user_registration_path
               %li
-                %a#base_logout_button.btn.btn-link= link_to 'Log out', destroy_user_session_path, method: :delete
+                =link_to 'Log out', destroy_user_session_path, method: :delete
         - else
           %a#base_login_button.btn.btn-link= link_to 'Log In', new_user_session_path
           %a.btn.btn-link= link_to 'Sign Up', new_user_registration_path
+  %br/
 
-%nav.navbar.navbar-inverse
-  .container-fluid
-    .navbar-header
-      %button.navbar-toggle{ "data-target" => "#myNavbar", "data-toggle" => "collapse", type: "button" }
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.navbar-brand{:href => "#"} Logo
-    #myNavbar.collapse.navbar-collapse
-      %ul.nav.navbar-nav
-        %li.active
-          %a{href: "#"} Home
-        %li
-          %a{ href: "#" } Products
-        %li
-          %a{ href: "#" } Deals
-        %li
-          %a{ href: "#" } Stores
-        %li
-          %a{ href: "#" } Contact
-      %ul.nav.navbar-nav.navbar-right
-        %li
-          %a{ href: "#" }
-            %span.glyphicon.glyphicon-user
-            Your Account
-        %li
-          %a{ href: "#" }
-            %span.glyphicon.glyphicon-shopping-cart
-            Cart
+.top-actions
+  .container
+    / Book, author search box
+    .col-md-4
+      .input-group
+        %input.form-control{placeholder: "author, title", type: "text"}/
+        %span.input-group-btn
+          %span.sprite.btn-search{type: "button"}
+    / Categories filter drop down
+    .col-md-4
+      .dropdown
+        %button#dropdown-categories.btn.btn-default.dropdown-toggle{ "data-toggle" => "dropdown", type: "button" }
+          Categories
+          %span.sprite.white-arrow-down.glyphicon
+        %ul.dropdown-menu{"aria-labelledby" => "dropdown-categories"}
+          - @categories.each do |cat|
+            %li
+              =link_to cat.name
+    / Drop down cart
+    .col-md-4
+      .dropdown
+        %button#dropdown-cart.btn.btn-default.dropdown-toggle{ "data-toggle" => "dropdown", type: "button" }
+          %span.ic-cart.vertical-center
+          %span#cart-value.vertical-center basket ($ 0)
+          %span#cart-no-items.ic-orange-circle.vertical-center 3
+          %span.white-arrow-down.vertical-center
+        %ul.dropdown-menu{"aria-labelledby" => "dropdown-cart"}
+          %li
+            =link_to 'Cart Details'
+
 
 .container
   - flash.each do |key, value|
-    %div{ :class => "alert alert-#{key}" }
+    %div{ class: "alert alert-#{key}" }
       = value
 
 = yield :top_content

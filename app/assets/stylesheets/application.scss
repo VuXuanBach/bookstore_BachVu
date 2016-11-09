@@ -18,7 +18,6 @@
 @import "bootstrap";
 @import 'bootstrap/theme';
 @import 'variables';
-
 .alert-alert {
   @extend .alert-warning;
 }
@@ -51,7 +50,9 @@ a {
   }
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
   font-size: 10pt;
   font-family: arial, sans-serif;
 }
@@ -61,7 +62,11 @@ textarea {
 }
 
 input {
-  &[type='password'], &[type='text'], &[type='date'], &[type='number'], &[type='email'] {
+  &[type='password'],
+  &[type='text'],
+  &[type='date'],
+  &[type='number'],
+  &[type='email'] {
     -moz-box-sizing: border-box;
     padding: 5px 10px;
     font-size: 12pt;
@@ -125,12 +130,14 @@ footer {
   text-indent: -4000px;
 }
 
-.left, .alignleft {
+.left,
+.alignleft {
   float: left;
   display: inline;
 }
 
-.right, .alignright {
+.right,
+.alignright {
   float: right;
   display: inline;
 }
@@ -200,13 +207,19 @@ footer {
   align-items: center;
 }
 
+.sprite {
+  background: sprite-image("sprite.png") no-repeat;
+}
+
 .btn {
   padding: 10px 30px;
   border: 0;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  &:focus, &:active:focus, &.active:focus {
+  &:focus,
+  &:active:focus,
+  &.active:focus {
     outline: 0;
   }
 }
@@ -220,7 +233,10 @@ footer {
 .btn-primary {
   background: $bookstore-orange;
   color: $white;
-  &:hover, &:focus, &:active, &.active {
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
     background: $lightning-yellow;
   }
 }
@@ -230,11 +246,15 @@ footer {
 }
 
 .btn-primary {
-  &:active, &.active {
+  &:active,
+  &.active {
     background: $geebung;
     box-shadow: none;
   }
-  &:hover, &:focus, &:active, &.active {
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
     color: $white;
     background-color: $buddha-gold;
     border-color: $geebung;
@@ -271,6 +291,7 @@ footer {
     filter: progid:dximagetransform.microsoft.gradient(startcolorstr='$buddha-gold', endcolorstr='$geebung', gradienttype=0);
   }
 }
+
 .open > .dropdown-toggle.btn-primary {
   background: linear-gradient(to bottom, $supernova 50%, $lightning-yellow 50%);
   filter: progid:dximagetransform.microsoft.gradient(startcolorstr='$supernova', endcolorstr='$lightning-yellow', gradienttype=0);
@@ -286,14 +307,15 @@ footer {
   border-left: 12px solid transparent;
   position: absolute;
   top: -12px;
-  right: 196px;
+  left: 12px;
+  content: '';
 }
 
 .dropdown ul.dropdown-menu {
   border-radius: 4px;
   box-shadow: none;
-  margin-top: 20px;
-  width: 300px;
+  margin-top: 15px;
+  width: 250px;
   &:before {
     @extend .dropdown-state;
     border-bottom: 12px solid $white;
@@ -315,4 +337,82 @@ footer {
 .verification-sub-title {
   font-weight: bold;
   font-size: 12pt;
+}
+
+.top-actions {
+  margin-top: -20px;
+  background-color: $soya-bean;
+  padding: 10px 0;
+}
+
+.btn-search {
+  width: 42px;
+  height: 42px;
+  display: inline-block;
+  background-position: -579px -39px;
+}
+
+.top-actions .dropdown .dropdown-menu,
+.top-actions .dropdown .dropdown-toggle {
+  width: 100%;
+  border-radius: 0;
+  text-shadow: none;
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+#dropdown-categories {
+  background: $millbrook;
+  color: white;
+}
+
+#dropdown-categories .white-arrow-down {
+  width: 20px;
+  height: 10px;
+}
+
+#dropdown-cart {
+  background: $persian-green;
+  color: white;
+  margin: -10px 0;
+}
+
+#dropdown-cart .white-arrow-down {
+  height: 10px;
+  width: 20px;
+}
+
+#cart-value {
+  margin: 0 3px;
+}
+
+#cart-no-items {
+  margin: 0 3px;
+  padding: 12px;
+}
+
+.white-arrow-down {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  background-position: -381px -54px;
+}
+
+.black-arrow-down {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  background-position: -427px -54px;
+}
+
+.orange-arrow-down {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  background-position: -476px -51px;
+}
+
+.caretup {
+    transform: rotate(180deg);
 }
