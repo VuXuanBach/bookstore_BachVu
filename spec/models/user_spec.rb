@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
   subject { @user }
 
   describe 'phone validation' do
-    ['123456789', '+8438112451'].each do |valid|
+    ['123456789', '+8438112451', ''].each do |valid|
       it { is_expected.to allow_value(valid).for(:phone) }
     end
     ['qwerty', '#@~123456789'].each do |invalid|
