@@ -7,4 +7,64 @@
 
 %body
 
+.top-nav
+  .container-fluid
+    .row
+      .col-sm-8.col-sm-offset-1
+        %p.font-weight-bolder.font-size-38
+          %span.text-color-black bookstore
+          %span.text-color-white .com
+      .col-sm-3
+        - if user_signed_in?
+          .dropdown
+            %a#base_user_email_toggle.dropdown-toggle{ "data-toggle" => "dropdown", type: "button" }
+              = current_user.email
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                %a#base_edit_profile.btn.btn-link= link_to 'Profile', edit_user_registration_path
+              %li
+                %a#base_logout_button.btn.btn-link= link_to 'Log out', destroy_user_session_path, method: :delete
+        - else
+          %a#base_login_button.btn.btn-link= link_to 'Log In', new_user_session_path
+          %a.btn.btn-link= link_to 'Sign Up', new_user_registration_path
+
+%nav.navbar.navbar-inverse
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle{ "data-target" => "#myNavbar", "data-toggle" => "collapse", type: "button" }
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{:href => "#"} Logo
+    #myNavbar.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li.active
+          %a{href: "#"} Home
+        %li
+          %a{ href: "#" } Products
+        %li
+          %a{ href: "#" } Deals
+        %li
+          %a{ href: "#" } Stores
+        %li
+          %a{ href: "#" } Contact
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          %a{ href: "#" }
+            %span.glyphicon.glyphicon-user
+            Your Account
+        %li
+          %a{ href: "#" }
+            %span.glyphicon.glyphicon-shopping-cart
+            Cart
+
+.container
+  - flash.each do |key, value|
+    %div{ :class => "alert alert-#{key}" }
+      = value
+
+= yield :top_content
+
+
 = yield

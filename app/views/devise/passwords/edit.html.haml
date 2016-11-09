@@ -1,0 +1,21 @@
+.container-fluid
+  .row
+    %p.verification-title.col-sm-4.col-sm-offset-1 Change your password
+  .row
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'form-horizontal col-sm-4 col-sm-offset-1' }) do |f|
+      = devise_error_messages!
+      = f.hidden_field :reset_password_token
+      .container-fluid
+        .row.well
+          .form-group
+            = f.label :password, "New password", class: 'control-label col-sm-2 col-lg-2'
+            .col-sm-10.col-lg-10
+              = f.password_field :password, autofocus: true, autocomplete: "off", class: 'form-control'
+          .form-group
+            = f.label :password_confirmation, "Confirm new password", class: 'control-label col-sm-2 col-lg-2'
+            .col-sm-10.col-lg-10
+              = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+
+        .row.center-content
+          .col-sm-5.col-sm-offset-6.vcenter
+            = f.submit 'Change my password', class: 'btn btn-primary gradient'

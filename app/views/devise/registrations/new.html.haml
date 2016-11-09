@@ -1,0 +1,46 @@
+.container-fluid
+  .row
+    %p.verification-title.col-sm-4.col-sm-offset-1 Register
+  .row
+    %p.verification-sub-title.col-sm-4.col-sm-offset-1 Fill the register and be part of our community.
+  %br/
+  .row
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-horizontal col-sm-4 col-sm-offset-1'}) do |f|
+      = devise_error_messages!
+      .container-fluid
+        .row.well
+          .form-group
+            = f.label :full_name, class: 'control-label col-sm-2 col-lg-2'
+            .col-sm-10.col-lg-10
+              = f.text_field :full_name, placeholder: 'Full Name', class: 'form-control'
+
+          .form-group
+            = f.label :email, class: 'control-label col-sm-2 col-lg-2'
+            .col-sm-10.col-lg-10
+              = f.email_field :email, placeholder: '@', class: 'form-control'
+
+          .form-group
+            = f.label :password, class: 'control-label col-sm-2 col-lg-2'
+            .col-sm-10.col-lg-10
+              = f.password_field :password, placeholder: 'Minimum 8 characters and 1 number', autocomplete: 'off', class: 'form-control'
+
+          .form-group
+            = f.label :password_confirmation, 'Confirm password', class: 'control-label col-sm-2 col-lg-2'
+            .col-sm-10.col-lg-10
+              = f.password_field :password_confirmation, placeholder: 'Retype the password', autocomplete: 'off', class: 'form-control'
+
+          .form-group
+            = f.label :birthday, class: 'control-label col-sm-2 col-lg-2'
+            .col-sm-10.col-lg-10
+              = f.date_field :birthday, class: 'form-control'
+
+          .form-group
+            = f.label :phone, class: 'control-label col-sm-2 col-lg-2'
+            .col-sm-10.col-lg-10
+              = f.text_field :phone, placeholder: 'Phone number', class: 'form-control'
+
+        .row.center-content
+          .col-sm-1
+            = submit_tag "Cancel", type: 'reset', class: 'inputsubmit btn-link font-size-12'
+          .col-sm-1.col-sm-offset-8.vcenter
+            = f.submit 'Send', class: 'btn btn-primary gradient'

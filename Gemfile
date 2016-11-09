@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 
@@ -23,10 +24,12 @@ gem 'bootstrap-sass'
 gem 'sprockets'
 gem 'bcrypt-ruby'
 gem 'faker'
-gem 'will_paginate', '3.0.4'
-gem 'bootstrap-will_paginate', '0.0.9'
 gem 'rails_admin', '~> 1.0'
 gem 'haml'
+gem 'devise', '3.4.1'
+gem 'devise-async'
+gem 'sidekiq'
+gem 'cancancan', '~> 1.10'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -42,11 +45,13 @@ group :development, :test do
   gem 'pg'
   gem 'rspec-rails', '>=2.13.1'
   gem "erb2haml"
+  gem 'letter_opener'
+  gem 'byebug'
 end
 
 group :test do
   gem 'selenium-webdriver', '2.35.1'
-  gem 'capybara', '2.2.0'
+  gem 'capybara'
   gem 'factory_girl_rails'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'

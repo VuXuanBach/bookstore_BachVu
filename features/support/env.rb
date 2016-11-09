@@ -7,6 +7,7 @@ require 'simplecov'
 # files.
 
 require 'cucumber/rails'
+require 'sidekiq/testing'
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
@@ -58,3 +59,13 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
+end
+
+Capybara.default_driver = :selenium
+Capybara.javascript_driver = :selenium
+
+Sidekiq::Testing.fake!
+
+World(FactoryGirl::Syntax::Methods)
