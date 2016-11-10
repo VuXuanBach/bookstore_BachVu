@@ -11,9 +11,17 @@ Feature: Index page
     When I visit home page
     Then I should not see "Log In,Sign Up"
 
-  Scenario: Browse book categories
+  Scenario: Browse categories
     Given I am an anonymous user
     And There is a list of categories
     When I visit home page
     And I click Categories dropdown list
     Then I should see list of categories
+
+  Scenario: Browse books of a category
+    Given I am an anonymous user
+    And There is a list of categories
+    And There is a list of books
+    When I visit home page
+    And I choose a category
+    Then I should see list of books belong to that category

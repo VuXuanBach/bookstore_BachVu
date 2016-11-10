@@ -16,9 +16,23 @@ Given(/^There is a list of categories$/) do
 end
 
 When(/^I click Categories dropdown list$/) do
-  click_on 'Categories'
+  click_on @categories.first.name
 end
 
 Then(/^I should see list of categories$/) do
   @categories.each { |cat| expect(page).to have_content(cat.name) }
+end
+
+Given(/^There is a list of books$/) do
+  @last_category = @categories.last
+  @book = create(:book, categories: [@last_category])
+end
+
+When(/^I choose a category$/) do
+  click_on @categories.first.name
+  click_on @last_category.name
+end
+
+Then(/^I should see list of books belong to that category$/) do
+  expect(page).to have_content(@book.title)
 end

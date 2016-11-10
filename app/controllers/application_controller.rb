@@ -1,9 +1,11 @@
 class ApplicationController < ActionController::Base
+
+  include StaticPagesHelper
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :load_all_categories
+  before_action :load_all_categories, :selected_category
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Access denied!"
@@ -17,5 +19,10 @@ class ApplicationController < ActionController::Base
 
   def load_all_categories
     @categories = Category.all
+  end
+
+  def selected_category
+    @selected_category = @categories.first
+    @books = books_from_category(@selected_category)
   end
 end

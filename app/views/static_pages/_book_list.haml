@@ -1,0 +1,11 @@
+-if books
+  - books.each_slice(4) do |book_slices|
+    .row
+      - book_slices.each do |book|
+        .col-lg-3
+          = book.title
+          %br/
+          = book.unit_price
+          %br/
+          %br/
+      %hr/
