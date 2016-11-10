@@ -12,9 +12,7 @@ Given(/^I am already logged into the system$/) do
 end
 
 Given(/^There is a list of categories$/) do
-  (0..2).each do |i|
-    create(:category, name: "category#{i}")
-  end
+  @categories = create_list(:category, 2)
 end
 
 When(/^I click Categories dropdown list$/) do
@@ -22,7 +20,5 @@ When(/^I click Categories dropdown list$/) do
 end
 
 Then(/^I should see list of categories$/) do
-  (0..2).each do |i|
-    expect(page).to have_content("category#{i}")
-  end
+  @categories.each { |cat| expect(page).to have_content(cat.name) }
 end

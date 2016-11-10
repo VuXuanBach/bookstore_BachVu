@@ -10,7 +10,7 @@ FactoryGirl.define do
   end
 
   factory :category do
-    name Faker::Name.name
+    name { Faker::Name.name }
     sequence(:sort_order) { |n| n }
   end
 end
