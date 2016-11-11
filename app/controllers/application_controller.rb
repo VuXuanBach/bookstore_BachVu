@@ -21,6 +21,6 @@ class ApplicationController < ActionController::Base
 
   def set_selected_category
     @selected_category = @categories.first
-    @books = @selected_category.books if @selected_category
+    @books = @selected_category&.books
   end
 end

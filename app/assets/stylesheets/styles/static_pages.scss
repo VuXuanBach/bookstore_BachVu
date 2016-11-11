@@ -1,5 +1,7 @@
-#home-title {
-  font-weight: bolder;
-  font-size: 14pt;
-  color: $bookstore-orange;
+.static_pages {
+  .home-title {
+    font-weight: bolder;
+    font-size: 24pt;
+    color: $bookstore-orange;
+  }
 }

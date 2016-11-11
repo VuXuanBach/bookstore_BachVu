@@ -6,8 +6,6 @@
   = favicon_link_tag
   = csrf_meta_tags
 
-%body
-
 .top-nav
   .container-fluid
     .row
@@ -69,7 +67,5 @@
     %div{ class: "alert alert-#{key}" }
       = value
 
-= yield :top_content
-
-
-= yield
+%body{ class: controller.controller_name }
+  = yield
