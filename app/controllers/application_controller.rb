@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  include StaticPagesHelper
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -22,6 +21,6 @@ class ApplicationController < ActionController::Base
 
   def set_selected_category
     @selected_category = @categories.first
-    @books = books_from_category(@selected_category)
+    @books = @selected_category.books if @selected_category
   end
 end
