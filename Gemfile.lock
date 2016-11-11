@@ -173,6 +173,10 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
     pg (0.15.1)
+    pg_search (1.0.6)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     rack (1.6.4)
     rack-pjax (1.0.0)
       nokogiri (~> 1.5)
@@ -327,6 +331,7 @@ DEPENDENCIES
   letter_opener
   paperclip (~> 5.0.0)
   pg
+  pg_search
   rails (= 4.2.1)
   rails_admin (~> 1.0)
   rspec-its

@@ -33,14 +33,16 @@
   .container
     / Book, author search box
     .col-md-4
-      .input-group
-        %input.form-control{placeholder: "author, title", type: "text"}/
-        %span.input-group-btn
-          %span.sprite.btn-search{type: "button"}
+      = form_for :book, url: books_path, method: :get, remote:true do |f|
+        .input-group
+          = text_field_tag :search, params[:search], placeholder: 'title, author', class: 'search_field form-control'
+          %span.input-group-btn
+            = f.submit '', class: 'sprite btn-search'
+    / Drop down cart
     / Categories filter drop down
     .col-md-4
       .dropdown
-        %button#dropdown-categories.btn.btn-default.dropdown-toggle{ "data-toggle" => "dropdown", type: "button" }
+        %button#dropdown-categories.btn.btn-default.dropdown-toggle{ 'data-toggle' => 'dropdown', type: 'button' }
           %span.category-title
             - if @selected_category
               = @selected_category.name
@@ -52,12 +54,12 @@
     / Drop down cart
     .col-md-4
       .dropdown
-        %button#dropdown-cart.btn.btn-default.dropdown-toggle{ "data-toggle" => "dropdown", type: "button" }
+        %button#dropdown-cart.btn.btn-default.dropdown-toggle{ 'data-toggle' => 'dropdown', type: 'button' }
           %span.ic-cart.vertical-center
           %span#cart-value.vertical-center basket ($ 0)
           %span#cart-no-items.ic-orange-circle.vertical-center 3
           %span.white-arrow-down.vertical-center
-        %ul.dropdown-menu{"aria-labelledby" => "dropdown-cart"}
+        %ul.dropdown-menu{ 'aria-labelledby' => 'dropdown-cart' }
           %li
             =link_to 'Cart Details'
 
