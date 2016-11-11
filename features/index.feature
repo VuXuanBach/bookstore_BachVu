@@ -25,3 +25,4 @@ Feature: Index page
     When I visit home page
     And I choose a category
     Then I should see list of books belong to that category
+    And I should not see list of books belong to other categories

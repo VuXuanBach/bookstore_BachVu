@@ -25,14 +25,19 @@ end
 
 Given(/^There is a list of books$/) do
   @last_category = @categories.last
-  @book = create(:book, categories: [@last_category])
+  @book1 = create(:book, categories: [@last_category])
+  @book2 = create(:book, categories: [@categories.first])
 end
 
 When(/^I choose a category$/) do
-  click_on @categories.first.name
+  find('#dropdown-categories').click
   click_on @last_category.name
 end
 
 Then(/^I should see list of books belong to that category$/) do
-  expect(page).to have_content(@book.title)
+  expect(page).to have_content(@book1.title)
+end
+
+Then(/^I should not see list of books belong to other categories$/) do
+  expect(page).not_to have_content(@book2.title)
 end

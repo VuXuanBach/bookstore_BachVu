@@ -11,11 +11,5 @@ category_list = [
 
 category_list.each do |name, sort_order|
   category = Category.create!(name: name, sort_order: sort_order)
-
-  (0..20).each do |i|
-    category.books.create!(title: Faker::App.name, description: Faker::Lorem.paragraph,
-                           author_name: Faker::Book.author, publisher_name: Faker::Book.publisher,
-                           published_date: Faker::Date.between(10.years.ago, Date.today),
-                           unit_price: Faker::Commerce.price)
-  end
+  FactoryGirl.create_list(:book, 20, categories: [category])
 end
