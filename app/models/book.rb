@@ -7,4 +7,7 @@ class Book < ActiveRecord::Base
   validates :unit_price, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :total_rating_value, numericality: { greater_than_or_equal_to: 0 }
   validates :total_rating_count, numericality: { greater_than_or_equal_to: 0 }
+
+  has_attached_file :photo, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: 'missing.jpg'
+  validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
 end

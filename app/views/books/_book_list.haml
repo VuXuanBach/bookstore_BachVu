@@ -3,9 +3,22 @@
     .row
       - book_slices.each do |book|
         .col-lg-3
-          = book.title
-          %br/
-          = book.unit_price
+          %span.book-photo=image_tag asset_path(book.photo), size: '180x260'
           %br/
           %br/
+          %span.book-title= book.title
+          %br/
+          = book.author_name
+          %br/
+          %br/
+          %span.book-description= book.description
+          %br/
+          = link_to 'more details'
+          %br/
+          %br/
+          %span.book-price= "$#{book.unit_price}"
+
       %hr/
+    %br/
+    %br/
+    %br/

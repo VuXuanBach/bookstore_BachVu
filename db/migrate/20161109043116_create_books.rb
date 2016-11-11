@@ -7,7 +7,6 @@ class CreateBooks < ActiveRecord::Migration
       t.string :publisher_name
       t.date :published_date
       t.decimal :unit_price, precision: 8, scale: 2
-      t.string :photo
       t.integer :total_rating_value, default: 0
       t.integer :total_rating_count, default: 0
 

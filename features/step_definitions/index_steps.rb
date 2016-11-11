@@ -35,7 +35,11 @@ When(/^I choose a category$/) do
 end
 
 Then(/^I should see list of books belong to that category$/) do
+  expect(page).to have_css("img[src*='missing']")
   expect(page).to have_content(@book1.title)
+  expect(page).to have_content(@book1.author_name)
+  expect(page).to have_content(@book1.description)
+  expect(page).to have_content(@book1.unit_price)
 end
 
 Then(/^I should not see list of books belong to other categories$/) do

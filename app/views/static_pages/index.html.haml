@@ -4,7 +4,8 @@
       %p.home-title.col-sm-4.col-sm-offset-1.category-title
         - if @selected_category
           = @selected_category.name
-
+  %br/
+  %br/
   .container
     #books_grid
       = render partial: 'books/book_list', locals: { books: @books }
