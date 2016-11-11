@@ -47,12 +47,12 @@ group :development, :test do
   gem "erb2haml"
   gem 'letter_opener'
   gem 'byebug'
+  gem 'factory_girl_rails'
 end
 
 group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara'
-  gem 'factory_girl_rails'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'rspec-its'

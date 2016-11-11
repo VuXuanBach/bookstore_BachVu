@@ -11,16 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161108061400) do
+ActiveRecord::Schema.define(version: 20161109082711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "books", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "author_name"
+    t.string   "publisher_name"
+    t.date     "published_date"
+    t.decimal  "unit_price",         precision: 8, scale: 2
+    t.string   "photo"
+    t.integer  "total_rating_value",                         default: 0
+    t.integer  "total_rating_count",                         default: 0
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
+  end
+
+  create_table "books_categories", id: false, force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.integer "book_id",     null: false
+  end
+
+  add_index "books_categories", ["book_id", "category_id"], name: "index_books_categories_on_book_id_and_category_id", using: :btree
+  add_index "books_categories", ["category_id", "book_id"], name: "index_books_categories_on_category_id_and_book_id", using: :btree
+
   create_table "categories", force: :cascade do |t|
     t.string   "name"
-    t.integer  "sort_order"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "sort_order", default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "categories", ["name"], name: "index_categories_on_name", using: :btree

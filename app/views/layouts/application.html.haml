@@ -3,9 +3,8 @@
   %title Bookstore
   = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = favicon_link_tag
   = csrf_meta_tags
-
-%body
 
 .top-nav
   .container-fluid
@@ -42,12 +41,14 @@
     .col-md-4
       .dropdown
         %button#dropdown-categories.btn.btn-default.dropdown-toggle{ "data-toggle" => "dropdown", type: "button" }
-          Categories
+          %span.category-title
+            - if @selected_category
+              = @selected_category.name
           %span.sprite.white-arrow-down.glyphicon
         %ul.dropdown-menu{"aria-labelledby" => "dropdown-categories"}
           - @categories.each do |cat|
             %li
-              =link_to cat.name
+              = link_to cat.name, books_path(cat_id: cat.id), remote: true
     / Drop down cart
     .col-md-4
       .dropdown
@@ -66,7 +67,5 @@
     %div{ class: "alert alert-#{key}" }
       = value
 
-= yield :top_content
-
-
-= yield
+%body{ class: controller.controller_name }
+  = yield

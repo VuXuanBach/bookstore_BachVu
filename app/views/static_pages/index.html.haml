@@ -1,7 +1,10 @@
-- content_for :top_content do
-  .jumbotron
-    .container
-      %h1 Welcome!
-      %p Register to get started.
-      %p
-        = link_to 'Register', new_user_registration_path, class: 'btn btn-primary btn-lg'
+.jumbotron
+  .container-fluid
+    .row
+      %p.home-title.col-sm-4.col-sm-offset-1.category-title
+        - if @selected_category
+          = @selected_category.name
+
+  .container
+    #books_grid
+      = render partial: 'books/book_list', locals: { books: @books }
