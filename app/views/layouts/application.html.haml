@@ -50,7 +50,7 @@
         %ul.dropdown-menu{"aria-labelledby" => "dropdown-categories"}
           - @categories.each do |cat|
             %li
-              = link_to cat.name, fetch_books_path(cat_id: cat.id), remote: true
+              = link_to cat.name, books_path(cat_id: cat.id), remote: true
     / Drop down cart
     .col-md-4
       .dropdown
