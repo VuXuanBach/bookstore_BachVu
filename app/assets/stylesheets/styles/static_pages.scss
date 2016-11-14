@@ -1,7 +1,21 @@
 .static_pages {
   .home-title {
     font-weight: bolder;
-    font-size: 24pt;
+    font-size: 18pt;
+    color: $bookstore-orange;
+  }
+  .book-title {
+    font-size: 14pt;
+    color: $bookstore-orange;
+  }
+  .book-description {
+    height: 110px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: flex;
+  }
+  .book-price {
+    font-size: 12pt;
     color: $bookstore-orange;
   }
 }
