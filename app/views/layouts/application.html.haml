@@ -64,10 +64,8 @@
             =link_to 'Cart Details'
 
 
-.container
-  - flash.each do |key, value|
-    %div{ class: "alert alert-#{key}" }
-      = value
+#flash_messages.container
+  = render partial: 'layouts/flash', locals:{ flash: flash }
 
 %body{ class: controller.controller_name }
   = yield

@@ -6,5 +6,9 @@ class BooksController < ApplicationController
     elsif params[:search]
       @books = Book.search_by_book_info(params[:search])
     end
+
+    unless @books.any?
+      flash.now[:alert] = 'No books found'
+    end
   end
 end
