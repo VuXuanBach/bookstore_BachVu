@@ -4,18 +4,48 @@
     font-size: 18pt;
     color: $bookstore-orange;
   }
+
   .book-title {
     font-size: 14pt;
     color: $bookstore-orange;
   }
+
   .book-description {
     height: 110px;
     text-overflow: ellipsis;
     overflow: hidden;
     display: flex;
   }
+
   .book-price {
     font-size: 12pt;
     color: $bookstore-orange;
+  }
+
+  #dropdown-max-books {
+    background: white;
+    .black-arrow-down {
+      width: 20px;
+      height: 10px;
+    }
+  }
+
+  .dropdown-hint {
+    color: $bookstore-orange;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .btn-dropdown {
+    padding: 10px;
+    border: 3px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    &:focus,
+    &:active:focus,
+    &.active:focus {
+      outline: 0;
+    }
   }
 }

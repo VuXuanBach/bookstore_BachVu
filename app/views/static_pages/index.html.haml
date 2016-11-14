@@ -4,6 +4,18 @@
       %p.home-title.col-sm-4.col-sm-offset-1.category-title
         - if @selected_category
           = @selected_category.name
+        .col-md-4
+          %span.dropdown-hint.font-size-12 See
+          %span.dropdown
+          %button#dropdown-max-books.btn-dropdown.btn-default.dropdown-toggle{ 'data-toggle' => 'dropdown', type: 'button' }
+            %span.num-book-title
+              = Book.max_book_number_page
+            %span.sprite.black-arrow-down.glyphicon
+          %ul.dropdown-menu{'aria-labelledby' => 'dropdown-max-books'}
+            - @books_per_page_ranges.each do |num|
+              %li
+                = link_to num, books_path(num: num), remote: true
+          %span.dropdown-hint.font-size-12 book per page
   %br/
   %br/
   .container

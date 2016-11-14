@@ -13,4 +13,8 @@ class Book < ActiveRecord::Base
 
   include PgSearch
   pg_search_scope :search_by_book_info, against: [:title, :author_name], using: { tsearch: { any_word: true } }
+
+  def self.max_book_number_page
+    10
+  end
 end

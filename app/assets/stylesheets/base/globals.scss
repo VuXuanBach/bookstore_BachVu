@@ -59,6 +59,21 @@ footer {
   padding: 0;
 }
 
+#logo {
+  float: left;
+  color: white;
+  letter-spacing: -1px;
+  font-weight: bolder;
+  line-height: 1;
+  background: linear-gradient(to right, black 68%, white 32%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .form-control {
   border: 0px none;
 }

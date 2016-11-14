@@ -11,12 +11,11 @@
     .row
       .col-sm-8.col-sm-offset-1
         %p.font-weight-bolder.font-size-38
-          %span.text-color-black bookstore
-          %span.text-color-white .com
+          = link_to 'bookstore.com', root_path, id: 'logo'
       .col-sm-3
         - if user_signed_in?
           .dropdown
-            %a#base_user_email_toggle.dropdown-toggle{ "data-toggle" => "dropdown", type: "button" }
+            %a#base_user_email_toggle.dropdown-toggle{ 'data-toggle' => 'dropdown', type: 'button' }
               = current_user.email
               %span.caret.glyphicon
             %ul.dropdown-menu
@@ -47,7 +46,7 @@
             - if @selected_category
               = @selected_category.name
           %span.sprite.white-arrow-down.glyphicon
-        %ul.dropdown-menu{"aria-labelledby" => "dropdown-categories"}
+        %ul.dropdown-menu{ 'aria-labelledby' => 'dropdown-categories' }
           - @categories.each do |cat|
             %li
               = link_to cat.name, books_path(cat_id: cat.id), remote: true

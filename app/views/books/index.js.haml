@@ -2,3 +2,4 @@
   $("#books_grid").html("#{ j render partial: 'books/book_list', locals: { books: @books } }");
   $(".category-title").html("#{ j @selected_category.name }");
   $("#flash_messages").html("#{ j render partial: 'layouts/flash', locals: { flash: flash } }")
+  $(".num-book-title").html("#{ j @num_book_per_page ? @num_book_per_page : '#{ Book.max_book_number_page }' }");

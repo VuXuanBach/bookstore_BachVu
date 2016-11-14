@@ -328,6 +328,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
+  kaminari
   letter_opener
   paperclip (~> 5.0.0)
   pg
