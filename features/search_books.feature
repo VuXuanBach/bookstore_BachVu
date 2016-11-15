@@ -16,5 +16,4 @@ Feature: Search for books
       | Cat1 Book1    | Cat1 Book1             |
       | Author2       | Cat1 Book2, Cat2 Book2 |
       | Cat1 Author1  | Cat1 Book1             |
-      | Book1 Author2 |                        |
-      | something     |                        |
+      | something     | No books found         |

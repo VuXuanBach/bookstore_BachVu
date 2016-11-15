@@ -12,16 +12,16 @@ RSpec.describe Book, type: :model do
   it { is_expected.to validate_numericality_of(:total_rating_value).is_greater_than_or_equal_to(0) }
   it { is_expected.to validate_numericality_of(:total_rating_count).is_greater_than_or_equal_to(0) }
 
-  describe 'search books' do
-    before { create(:book, title: 'some thing') }
+  describe 'book is searchable' do
+    let(:book) { create(:book) }
 
     it 'has result when search books with correct query' do
-      books = Book.search_by_book_info('some')
+      books = Book.search_by_book_info(book.title)
       expect(books).not_to be_empty
     end
 
-    it 'does not have result when search books with correct query' do
-      books = Book.search_by_book_info('asd')
+    it 'does not have result when search books with incorrect query' do
+      books = Book.search_by_book_info('somethingrandom')
       expect(books).to be_empty
     end
   end
