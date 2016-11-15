@@ -10,4 +10,7 @@ class Book < ActiveRecord::Base
 
   has_attached_file :photo, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: 'missing.jpg'
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
+
+  include PgSearch
+  pg_search_scope :search_by_book_info, against: [:title, :author_name], using: { tsearch: { any_word: true } }
 end

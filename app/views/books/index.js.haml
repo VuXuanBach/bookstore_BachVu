@@ -1,3 +1,4 @@
 :plain
   $("#books_grid").html("#{ j render partial: 'books/book_list', locals: { books: @books } }");
   $(".category-title").html("#{ j @selected_category.name }");
+  $("#flash_messages").html("#{ j render partial: 'layouts/flash', locals: { flash: flash } }")
