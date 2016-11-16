@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :load_all_categories, :set_selected_category
+  before_action :load_all_categories
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Access denied!"
@@ -17,11 +17,5 @@ class ApplicationController < ActionController::Base
 
   def load_all_categories
     @categories = Category.all
-  end
-
-  def set_selected_category
-    @selected_category = CategoryService.new(params, session).set_selected_category
-    @num_book_per_page = BookService.new(params, session, @selected_category).set_num_book_per_page
-    @books = BookService.new(params, session, @selected_category).set_books&.page(params[:page])&.per(@num_book_per_page)
   end
 end

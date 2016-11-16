@@ -17,3 +17,10 @@ Feature: Search for books
       | Author2       | Cat1 Book2, Cat2 Book2 |
       | Cat1 Author1  | Cat1 Book1             |
       | something     | No books found         |
+
+  Scenario: Search books and change number of books per page
+    Given There are 20 books with unique search title
+    When I visit home page
+    And I search for the first book
+    And I change number of book per page to 5
+    Then I should see 1 books

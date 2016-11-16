@@ -33,5 +33,9 @@ FactoryGirl.define do
       ]
       photo { File.new("#{Rails.root}/app/assets/images/#{book_photo_list.sample}") }
     end
+
+    factory :unique_search_title do
+      sequence(:title) { |n| "#{n}" }
+    end
   end
 end

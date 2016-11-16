@@ -1,7 +1,6 @@
 class BookService
-  attr_reader :params
-  attr_reader :session
-  attr_reader :selected_category
+  attr_reader :params, :session, :selected_category
+
   def initialize(params, session, selected_category)
     @params = params
     @session = session

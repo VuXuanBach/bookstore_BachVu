@@ -1,6 +1,6 @@
 class CategoryService
-  attr_reader :params
-  attr_reader :session
+  attr_reader :params, :session
+
   def initialize(params, session)
     @params = params
     @session = session
@@ -17,5 +17,4 @@ class CategoryService
     session[:selected_category_id] = selected_category&.id
     selected_category
   end
-
 end
