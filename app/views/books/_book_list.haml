@@ -1,4 +1,5 @@
 -if books
+  = paginate books, remote: true, params: {controller: :books, action: :index}
   - books.each_slice(4) do |book_slices|
     .row
       - book_slices.each do |book|

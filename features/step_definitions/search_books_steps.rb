@@ -24,3 +24,13 @@ When(/^I search "([^"]*)"$/) do |search_input|
   fill_in 'search', with: search_input
   find('input[name=\'commit\']').click
 end
+
+Given(/^There are (\d+) books with unique search title$/) do |total_book_number|
+  cat = create(:category)
+  create_list(:unique_search_title, total_book_number, categories: [cat])
+end
+
+When(/^I search for the first book$/) do
+  fill_in 'search', with: Book.first.title
+  find('input[name=\'commit\']').click
+end

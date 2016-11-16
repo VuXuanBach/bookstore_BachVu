@@ -12,3 +12,7 @@ Then(/^I should not see "([^"]*)"$/) do |content|
     expect(page).not_to have_content(c)
   end
 end
+
+Transform /^(-?\d+)$/ do |number|
+  number.to_i
+end
