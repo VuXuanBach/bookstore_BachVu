@@ -1,5 +1,6 @@
 class Book < ActiveRecord::Base
   has_and_belongs_to_many :categories
+  has_many :comments
 
   validates :title, :author_name, :publisher_name, presence: true, length: { maximum: 50 }
   validates :description, presence: true, length: { maximum: 500 }
@@ -20,5 +21,9 @@ class Book < ActiveRecord::Base
 
   def self.min_book_number_page
     1
+  end
+
+  def average_rating
+    self.comments.average(:rating)&.round
   end
 end

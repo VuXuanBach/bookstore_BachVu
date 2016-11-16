@@ -11,6 +11,7 @@ RSpec.describe Book, type: :model do
   it { is_expected.to validate_numericality_of(:unit_price).is_greater_than_or_equal_to(0) }
   it { is_expected.to validate_numericality_of(:total_rating_value).is_greater_than_or_equal_to(0) }
   it { is_expected.to validate_numericality_of(:total_rating_count).is_greater_than_or_equal_to(0) }
+  it { is_expected.to have_many(:comments) }
 
   describe 'book is searchable' do
     let(:book) { create(:book) }
