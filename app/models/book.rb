@@ -17,4 +17,8 @@ class Book < ActiveRecord::Base
   def self.max_book_number_page
     10
   end
+
+  def self.min_book_number_page
+    1
+  end
 end
