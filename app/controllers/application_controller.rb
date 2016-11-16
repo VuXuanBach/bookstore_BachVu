@@ -20,12 +20,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_selected_category
-    if session[:selected_category_id]
-      @selected_category = Category.find(session[:selected_category_id])
-    else
-      @selected_category = Category.first
-      session[:selected_category_id] = @selected_category&.id
-    end
-    @books = @selected_category&.books&.page(params[:page])&.per(Book.max_book_number_page)
+    @selected_category = CategoryService.new(params, session).set_selected_category
+    @num_book_per_page = BookService.new(params, session, @selected_category).set_num_book_per_page
+    @books = BookService.new(params, session, @selected_category).set_books&.page(params[:page])&.per(@num_book_per_page)
   end
 end

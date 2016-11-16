@@ -9,7 +9,7 @@
           %span.dropdown
           %button#dropdown-max-books.btn-dropdown.btn-default.dropdown-toggle{ 'data-toggle' => 'dropdown', type: 'button' }
             %span.num-book-title
-              = Book.max_book_number_page
+              = @num_book_per_page ? @num_book_per_page : Book.max_book_number_page
             %span.sprite.black-arrow-down.glyphicon
           %ul.dropdown-menu{'aria-labelledby' => 'dropdown-max-books'}
             - @books_per_page_ranges.each do |num|
