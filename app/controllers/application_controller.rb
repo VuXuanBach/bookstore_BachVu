@@ -6,8 +6,17 @@ class ApplicationController < ActionController::Base
   before_action :load_all_categories, :set_selected_category
 
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "Access denied!"
+    flash[:error] = 'Access denied!'
     redirect_to root_path
+  end
+  rescue_from ActiveRecord::RecordNotFound, ActionController::RoutingError, with: :error_render_method
+
+  def error_render_method
+    respond_to do |format|
+      format.html { render file: "#{Rails.root}/public/404", layout: false, status: :not_found }
+      format.xml  { head :not_found }
+      format.any  { head :not_found }
+    end
   end
 
   def configure_permitted_parameters

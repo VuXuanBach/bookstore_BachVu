@@ -28,7 +28,7 @@
       .col-sm-4
         .price-section
           .book-price
-            = "$#{@book.unit_price}"
+            = number_to_currency(@book.unit_price)
           .image-wrapper
             %span.sprite.cart-icon
             %p Add

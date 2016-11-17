@@ -14,7 +14,7 @@
           %br/
           %span.book-description= book.description
           %br/
-          = link_to 'more details', book
+          = link_to 'more details', book, id: "more-details-#{book.id}"
           %br/
           %br/
           %span.book-price= "$#{book.unit_price}"
