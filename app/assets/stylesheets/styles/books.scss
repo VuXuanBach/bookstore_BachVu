@@ -1,0 +1,62 @@
+.books {
+  .book-title {
+    font-size: 20pt;
+    font-weight: bold;
+    color: $bookstore-orange;
+    margin-bottom: 15px;
+  }
+
+  .book-description {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .publisher {
+    font-style: italic;
+    height: 270px;
+  }
+
+  .book-price {
+    font-size: 30pt;
+    font-weight: bolder;
+    color: $bookstore-orange;
+    display: flex;
+    align-items: center;
+  }
+
+  .price-section {
+    padding: 40px;
+    width: 200px;
+    height: 200px;
+    border: 2px;
+    background-color: $alabaster;
+    text-align: center;
+  }
+
+  .image-wrapper {
+    position: relative;
+    margin-top: 60px;
+    display: inline-block;
+  }
+
+  .image-wrapper p {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    color: white;
+    margin: 5px;
+    border: 0;
+  }
+
+  .social-section {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .you-like-this-section {
+    margin-right: 10px;
+    margin-bottom: 4px;
+  }
+}

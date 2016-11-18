@@ -6,6 +6,10 @@
   @extend .alert-info;
 }
 
+.jumbotron {
+  background-color: white;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -200,10 +204,6 @@ footer {
 .center-content {
   display: flex;
   align-items: center;
-}
-
-.sprite {
-  background: sprite-image("sprite.png") no-repeat;
 }
 
 .btn {
@@ -410,4 +410,53 @@ footer {
 
 .custom-caret-up {
   transform: rotate(180deg);
+}
+
+.cart-icon {
+  width: 100px;
+  height: 50px;
+  display: inline-block;
+  background-position: -590px -140px;
+}
+
+.you-like-this-icon {
+  width: 90px;
+  height: 30px;
+  display: inline-block;
+  background-position: -32px -214px;
+}
+
+.fb-share-icon {
+  width: 75px;
+  height: 28px;
+  display: inline-block;
+  background-position: -128px -221px;
+}
+
+.twitter-share-icon {
+  width: 75px;
+  height: 28px;
+  display: inline-block;
+  background-position: -244px -221px;
+}
+
+.google-plus-share-icon {
+  width: 75px;
+  height: 28px;
+  display: inline-block;
+  background-position: -359px -221px;
+}
+
+.comment-icon {
+  width: 100px;
+  height: 28px;
+  display: inline-block;
+  background-position: -474px -221px;
+}
+
+.talk-box-icon {
+  width: 50px;
+  height: 30px;
+  display: inline-block;
+  background-position: -26px -272px;
 }

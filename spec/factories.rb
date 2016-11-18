@@ -3,6 +3,7 @@ FactoryGirl.define do
     sequence(:email) { |n| "person_#{n}@example.com" }
     password { Faker::Internet.password(8) }
     password_confirmation { password }
+    confirmed_at Time.current
 
     factory :admin do
       admin true

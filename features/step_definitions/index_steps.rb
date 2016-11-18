@@ -3,7 +3,7 @@ When(/^I visit home page$/) do
 end
 
 Given(/^I am already logged into the system$/) do
-  @user = create(:user, confirmed_at: Time.current)
+  @user = create(:user)
 
   visit new_user_session_path
   fill_in 'Email', with: @user.email

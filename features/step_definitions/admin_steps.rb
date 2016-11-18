@@ -7,12 +7,8 @@ Given(/^I login as a normal user$/) do
   click_button 'Send'
 end
 
-When(/^I visit admin page as normal user$/) do
-  visit rails_admin.dashboard_path
-end
-
 Given(/^I login as an admin$/) do
-  @user = create(:admin, confirmed_at: Time.current)
+  @user = create(:admin)
 
   visit new_user_session_path
   fill_in 'Email', with: @user.email
@@ -20,6 +16,6 @@ Given(/^I login as an admin$/) do
   click_button 'Send'
 end
 
-When(/^I visit admin page as admin$/) do
+When(/^I visit admin page$/) do
   visit rails_admin.dashboard_path
 end

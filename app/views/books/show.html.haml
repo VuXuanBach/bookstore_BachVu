@@ -1,0 +1,34 @@
+.jumbotron
+  .container-fluid
+    .row.col-sm-offset-1
+      .col-sm-2
+        %span.book-photo=image_tag asset_path(@book.photo), size: '270x390'
+      .col-sm-6
+        .book-title= @book.title
+        .font-size-14
+          by
+          = @book.author_name
+        .book-description= @book.description
+        .publisher
+          Publisher:
+          = @book.publisher_name
+          %br/
+          Published date:
+          = @book.published_date
+          .social-section
+            %span.sprite.you-like-this-icon.you-like-this-section
+            %span.sprite.fb-share-icon
+            %span.sprite.talk-box-icon
+            %span.sprite.twitter-share-icon
+            %span.sprite.talk-box-icon
+            %span.sprite.google-plus-share-icon
+            %span.sprite.talk-box-icon
+            %span.sprite.comment-icon
+            %span.sprite.talk-box-icon
+      .col-sm-4
+        .price-section
+          .book-price
+            = number_to_currency(@book.unit_price)
+          .image-wrapper
+            %span.sprite.cart-icon
+            %p Add
