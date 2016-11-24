@@ -1,9 +1,9 @@
 .jumbotron
   .container-fluid
-    .row.col-sm-offset-1
-      .col-sm-2
+    .row.col-lg-offset-1
+      .col-lg-3
         %span.book-photo=image_tag asset_path(@book.photo), size: '270x390'
-      .col-sm-6
+      .col-lg-5
         .book-title= @book.title
         .font-size-14
           by
@@ -25,18 +25,18 @@
             %span.sprite.talk-box-icon
             %span.sprite.comment-icon
             %span.sprite.talk-box-icon
-      .col-sm-4
+      .col-lg-4
         .price-section
           .book-price
             = number_to_currency(@book.unit_price)
           .image-wrapper
             %span.sprite.cart-icon
             %p Add
-    .row.col-sm-offset-1
-      %hr.separator.col-sm-10
-    .row.col-sm-offset-1
-      %span.comment-title.col-sm-11.font-size-12 Add your Comment:
-    .row.col-sm-offset-1
+    .row.col-lg-offset-1
+      %hr.separator.col-lg-10
+    .row.col-lg-offset-1
+      %span.comment-title.col-lg-11.font-size-12 Add your Comment:
+    .row.col-lg-offset-1
       = form_for :comment, url: comments_path(book_id: @book), method: :post, remote: true do |f|
         .container-fluid
           .row
@@ -44,16 +44,16 @@
               #star-rating.star-section
           .row
             .form-group
-              .col-sm-10
+              .col-lg-10
                 = f.text_area :content, id: 'comment-content', class: 'form-control comment-content', rows: 5
           %br/
           .row
-            .col-sm-7
+            .col-lg-7
               = submit_tag 'Cancel', type: 'reset', class: 'inputsubmit btn-link font-size-12'
-            .col-sm-1.col-sm-offset-9.vcenter
+            .col-lg-1.col-lg-offset-9.vcenter
               = f.submit 'Send', class: 'btn btn-primary gradient'
 
-    .row.col-sm-offset-1
-      %hr.separator.col-sm-10
+    .row.col-lg-offset-1
+      %hr.separator.col-lg-10
     #comments-section
       = render partial: 'comments/comments', locals: { comments: @comments }

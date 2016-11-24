@@ -17,4 +17,15 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:content, :rating)
   end
+
+  protected
+  
+  def authenticate_user!
+    if user_signed_in?
+      super
+    else
+      flash[:alert] = 'You need to sign in or sign up before continuing!'
+      render :js => "window.location = '#{new_user_session_path}'"
+    end
+  end
 end

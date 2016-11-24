@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(document).ready(function () {
   $('.star-rating').raty({
     path: '/assets/',
     readOnly: true,
