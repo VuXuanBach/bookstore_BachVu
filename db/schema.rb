@@ -51,11 +51,10 @@ ActiveRecord::Schema.define(version: 20161117083558) do
   add_index "categories", ["name"], name: "index_categories_on_name", using: :btree
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "rating",         default: 0
+    t.integer  "rating",     default: 0
     t.string   "content"
-    t.datetime "commented_time"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "user_id"
     t.integer  "book_id"
   end

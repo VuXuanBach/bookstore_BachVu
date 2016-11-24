@@ -24,6 +24,6 @@ class Book < ActiveRecord::Base
   end
 
   def average_rating
-    self.comments.average(:rating)&.round
+    comments.average(:rating)&.round || 0
   end
 end

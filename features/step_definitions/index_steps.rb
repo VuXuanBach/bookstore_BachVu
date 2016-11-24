@@ -40,7 +40,6 @@ Then(/^I should see list of books belong to that category$/) do
   expect(page).to have_content(@book1.author_name)
   expect(page).to have_content(@book1.description)
   expect(page).to have_content(@book1.unit_price)
-  debugger
 end
 
 Then(/^I should not see list of books belong to other categories$/) do

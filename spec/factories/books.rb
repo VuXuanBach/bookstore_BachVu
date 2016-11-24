@@ -1,21 +1,4 @@
 FactoryGirl.define do
-  factory :user do
-    sequence(:email) { |n| "person_#{n}@example.com" }
-    password { Faker::Internet.password(8) }
-    password_confirmation { password }
-    confirmed_at Time.current
-    full_name { Faker::Name.name }
-
-    factory :admin do
-      admin true
-    end
-  end
-
-  factory :category do
-    sequence(:name) { |n| "#{Faker::Name.name}#{n}" }
-    sequence(:sort_order) { |n| n }
-  end
-
   factory :book do
     categories { [create(:category)] }
 
@@ -39,14 +22,5 @@ FactoryGirl.define do
     factory :unique_search_title do
       sequence(:title) { |n| "#{n}" }
     end
-  end
-
-  factory :comment do
-    user { create(:user) }
-    book { create(:book) }
-
-    rating { Faker::Number.between(Comment::MIN_RATING, Comment::MAX_RATING) }
-    content { Faker::Lorem.paragraph }
-    commented_time { Faker::Time.between(10.days.ago, Date.today, :all) }
   end
 end

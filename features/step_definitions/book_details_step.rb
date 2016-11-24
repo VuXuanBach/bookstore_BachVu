@@ -24,8 +24,8 @@ Given(/^There are several comments belong to each book$/) do
   @first_book = Book.first
   @last_book = Book.last
 
-  create_list(:comment, 3, book: @first_book, user: @user)
-  create_list(:comment, 3, book: @last_book, user: @user)
+  create_list(:comment, 3, book: @first_book)
+  create_list(:comment, 3, book: @last_book)
 end
 
 When(/^I visit book details page$/) do
@@ -35,21 +35,21 @@ end
 Then(/^I should see that book's comments$/) do
   @first_book.comments.each do |comment|
     expect(page).to have_content(comment.content)
-    expect(page).to have_content(comment.commented_time)
   end
 end
 
 Then(/^I should not see another book's comments$/) do
   @last_book.comments.each do |comment|
     expect(page).not_to have_content(comment.content)
-    expect(page).not_to have_content(comment.commented_time)
   end
 end
 
 When(/^I comment and rate that book$/) do
-
+  find("img[alt='4']").click
+  fill_in 'comment-content', with: 'Good'
+  click_on 'Send'
 end
 
 Then(/^I should see my new comment on that book$/) do
-
+  expect(page).to have_content('Good')
 end

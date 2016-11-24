@@ -27,3 +27,12 @@ Feature: Book details
     When I visit book details page
     And I comment and rate that book
     Then I should see my new comment on that book
+
+  Scenario: Anonymous user comment on a book
+    Given I am an anonymous user
+    And There are 2 books
+    And There are several comments belong to each book
+    When I visit book details page
+    And I comment and rate that book
+    Then I should see "Login"
+    And I should see "You need to sign in or sign up before continuing!"
