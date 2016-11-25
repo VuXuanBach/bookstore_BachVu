@@ -53,3 +53,8 @@ end
 Then(/^I should see my new comment on that book$/) do
   expect(page).to have_content('Good')
 end
+
+Then(/^I should see previous book detail page$/) do
+  expect(page).to have_content(@first_book.title)
+  expect(page).to have_content(@first_book.comments.first.content)
+end

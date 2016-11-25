@@ -36,3 +36,5 @@ Feature: Book details
     And I comment and rate that book
     Then I should see "Login"
     And I should see "You need to sign in or sign up before continuing!"
+    When I login as a normal user
+    Then I should see previous book detail page
