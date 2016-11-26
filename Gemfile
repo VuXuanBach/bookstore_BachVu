@@ -22,7 +22,6 @@ gem 'sprockets'
 gem 'bcrypt-ruby'
 gem 'faker'
 gem 'rails_admin', '~> 1.0'
-gem 'haml'
 gem 'devise', '3.4.1'
 gem 'devise-async'
 gem 'sidekiq'
@@ -30,6 +29,7 @@ gem 'cancancan', '~> 1.10'
 gem "paperclip", "~> 5.0.0"
 gem 'pg_search'
 gem 'kaminari'
+gem 'slim-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

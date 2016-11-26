@@ -2,40 +2,43 @@
   .container-fluid
     .row.col-lg-offset-1
       .col-lg-3
-        %span.book-photo=image_tag asset_path(@book.photo), size: '270x390'
+        span.book-photo=image_tag asset_path(@book.photo), size: '270x390'
       .col-lg-5
         .book-title= @book.title
         .font-size-14
-          by
+          | by
+          '
           = @book.author_name
         .book-description= @book.description
         .publisher
-          Publisher:
+          | Publisher:
+          '
           = @book.publisher_name
-          %br/
-          Published date:
+          br/
+          | Published date:
+          '
           = @book.published_date
           .social-section
-            %span.sprite.you-like-this-icon.you-like-this-section
-            %span.sprite.fb-share-icon
-            %span.sprite.talk-box-icon
-            %span.sprite.twitter-share-icon
-            %span.sprite.talk-box-icon
-            %span.sprite.google-plus-share-icon
-            %span.sprite.talk-box-icon
-            %span.sprite.comment-icon
-            %span.sprite.talk-box-icon
+            span.sprite.you-like-this-icon.you-like-this-section
+            span.sprite.fb-share-icon
+            span.sprite.talk-box-icon
+            span.sprite.twitter-share-icon
+            span.sprite.talk-box-icon
+            span.sprite.google-plus-share-icon
+            span.sprite.talk-box-icon
+            span.sprite.comment-icon
+            span.sprite.talk-box-icon
       .col-lg-4
         .price-section
           .book-price
             = number_to_currency(@book.unit_price)
           .image-wrapper
-            %span.sprite.cart-icon
-            %p Add
+            span.sprite.cart-icon
+            p Add
     .row.col-lg-offset-1
-      %hr.separator.col-lg-10
+      hr.separator.col-lg-10
     .row.col-lg-offset-1
-      %span.comment-title.col-lg-11.font-size-12 Add your Comment:
+      span.comment-title.col-lg-11.font-size-12 Add your Comment:
     .row.col-lg-offset-1
       = form_for :comment, url: comments_path(book_id: @book), method: :post, remote: true do |f|
         .container-fluid
@@ -46,7 +49,7 @@
             .form-group
               .col-lg-10
                 = f.text_area :content, id: 'comment-content', class: 'form-control comment-content', rows: 5
-          %br/
+          br/
           .row
             .col-lg-7
               = submit_tag 'Cancel', type: 'reset', class: 'inputsubmit btn-link font-size-12'
@@ -54,6 +57,6 @@
               = f.submit 'Send', class: 'btn btn-primary gradient'
 
     .row.col-lg-offset-1
-      %hr.separator.col-lg-10
+      hr.separator.col-lg-10
     #comments-section
       = render partial: 'comments/comments', locals: { comments: @comments }
