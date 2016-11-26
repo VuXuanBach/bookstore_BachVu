@@ -1,25 +1,43 @@
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  .form-group
-    = f.label :full_name
-    = f.text_field :full_name, class: 'form-control'
-  .form-group
-    = f.label :email
-    = f.email_field :email, class: 'form-control'
-    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-      span.label.label-info
-        Currently waiting confirmation for: #{resource.unconfirmed_email}
-  .form-group
-    = f.label :password
-    = f.password_field :password, autocomplete: "off", class: 'form-control'
-    span.help-block leave blank if you don't want to change it
-  .form-group
-    = f.label :password_confirmation
-    br/
-    = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
-  .form-group
-    = f.label :current_password
-    = f.password_field :current_password, autocomplete: "off", class: 'form-control'
-    span.help-block we need your current password to confirm your changes
-  = f.submit "Update", class: 'btn btn-primary'
-= link_to "Back", :back, class: 'btn btn-default btn-sm'
+.container-fluid
+  .row
+    p.verification-title.col-sm-4.col-sm-offset-1 Edit Profile
+  .row
+    p.col-lg-5.col-sm-offset-1.alert.alert-warning.alert-dismissable
+      a.close href='#' data-dismiss='alert' aria-label='close' ×
+      | If the box of password and confirm password are empty, the password won't change
+  br/
+  .row
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal col-lg-5 col-sm-offset-1' }) do |f|
+      = devise_error_messages!
+      .container-fluid
+        .row.well
+          .form-group
+            = f.label :full_name, class: 'control-label col-sm-2 col-lg-2'
+            .col-sm-10.col-lg-10
+              = f.text_field :full_name, class: 'form-control'
+          .form-group
+            = f.label :email, class: 'control-label col-sm-2 col-lg-2'
+            .col-sm-10.col-lg-10
+              = f.email_field :email, class: 'form-control'
+              - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+                span.label.label-info
+                  Currently waiting confirmation for: #{resource.unconfirmed_email}
+          .form-group
+            = f.label :password, class: 'control-label col-sm-2 col-lg-2'
+            .col-sm-10.col-lg-10
+              = f.password_field :password, autocomplete: "off", class: 'form-control'
+          .form-group
+            = f.label :password_confirmation, 'Confirm password', class: 'control-label col-sm-2 col-lg-2'
+            .col-sm-10.col-lg-10
+              = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+          .form-group
+            = f.label :current_password, class: 'control-label col-sm-2 col-lg-2'
+            .col-sm-10.col-lg-10
+              = f.password_field :current_password, autocomplete: "off", class: 'form-control'
+              span.help-block we need your current password to confirm your changes
+        .row.center-content
+          .col-sm-1
+            = link_to "Back", :back, class: 'btn btn-default btn-sm'
+          .col-sm-1.col-sm-offset-8.vcenter
+            = f.submit "Update", class: 'btn btn-primary'
+
