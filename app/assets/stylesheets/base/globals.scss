@@ -18,7 +18,7 @@
 
 body {
   line-height: 18px;
-  font-family: Open Sans;
+  font-family: 'Open Sans', sans-serif;
   color: $mine-shaft;
 }
 
@@ -459,4 +459,18 @@ footer {
   height: 30px;
   display: inline-block;
   background-position: -26px -272px;
+}
+
+.green-star-icon {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  background-position: -518px -145px;
+}
+
+.gray-star-icon {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  background-position: -539px -145px;
 }

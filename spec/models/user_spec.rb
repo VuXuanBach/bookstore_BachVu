@@ -5,6 +5,8 @@ RSpec.describe User, type: :model do
 
   subject { @user }
 
+  it { is_expected.to have_many(:comments) }
+
   describe 'phone validation' do
     ['123456789', '+8438112451', ''].each do |valid|
       it { is_expected.to allow_value(valid).for(:phone) }

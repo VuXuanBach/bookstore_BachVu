@@ -69,3 +69,5 @@ Capybara.javascript_driver = :selenium
 Sidekiq::Testing.fake!
 
 World(FactoryGirl::Syntax::Methods)
+
+# Selenium::WebDriver::Chrome::Service.executable_path = '/usr/local/bin/chromedriver'

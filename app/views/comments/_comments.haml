@@ -1,0 +1,15 @@
+.row.col-sm-offset-1
+  %span.comment-title.col-sm-11.font-size-12= "Comments: (#{comments.count})"
+- if comments
+  - comments.each do |comment|
+    .row.col-sm-offset-1
+      .col-sm-10.comment-user-name-section.font-size-12
+        = comment.user.full_name
+    .row.col-sm-offset-1
+      .col-sm-10
+        = comment.content
+    .row.col-sm-offset-1
+      .col-sm-10.comment-time-section
+        = "Submitted on #{comment.created_at}"
+    .row.col-sm-offset-1
+      %hr.dotted-separator.col-sm-10

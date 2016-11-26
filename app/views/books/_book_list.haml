@@ -9,8 +9,10 @@
           %br/
           %span.book-title= book.title
           %br/
+          by
           = book.author_name
           %br/
+          .star-rating{ 'data-score' => "#{book.average_rating}" }
           %br/
           %span.book-description= book.description
           %br/
@@ -18,7 +20,6 @@
           %br/
           %br/
           %span.book-price= "$#{book.unit_price}"
-
       %hr/
     %br/
     %br/

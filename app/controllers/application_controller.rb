@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :load_all_categories, :set_selected_category
+  before_action :store_current_location, unless: :devise_controller?
 
   rescue_from CanCan::AccessDenied, ActiveRecord::RecordNotFound, ActionController::RoutingError, with: :error_render_method
 
@@ -25,5 +26,13 @@ class ApplicationController < ActionController::Base
 
   def set_selected_category
     @selected_category = CategoryService.new(params, session).set_selected_category
+  end
+
+  private
+
+  def store_current_location
+    if request.format == "text/html" || request.content_type == "text/html"
+      store_location_for(:user, request.url)
+    end
   end
 end
