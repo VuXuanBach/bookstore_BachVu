@@ -8,13 +8,13 @@
       .container-fluid
         .row.well
           .form-group
-            = f.label :password, "New password", class: 'control-label col-sm-2 col-lg-2'
+            = f.label :password, 'New password', class: 'control-label col-sm-2 col-lg-2'
             .col-sm-10.col-lg-10
-              = f.password_field :password, autofocus: true, autocomplete: "off", class: 'form-control'
+              = f.password_field :password, autofocus: true, autocomplete: 'off', class: 'form-control'
           .form-group
-            = f.label :password_confirmation, "Confirm new password", class: 'control-label col-sm-2 col-lg-2'
+            = f.label :password_confirmation, 'Confirm new password', class: 'control-label col-sm-2 col-lg-2'
             .col-sm-10.col-lg-10
-              = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+              = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control'
 
         .row.center-content
           .col-sm-5.col-sm-offset-6.vcenter

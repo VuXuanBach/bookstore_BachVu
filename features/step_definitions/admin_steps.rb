@@ -15,7 +15,3 @@ Given(/^I login as an admin$/) do
   fill_in 'Password', with: @user.password
   click_button 'Send'
 end
-
-When(/^I visit admin page$/) do
-  visit rails_admin.dashboard_path
-end

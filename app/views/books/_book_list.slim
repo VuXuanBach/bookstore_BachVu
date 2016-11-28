@@ -4,22 +4,21 @@
     .row
       - book_slices.each do |book|
         .col-lg-3.book-list
-          span.book-photo=image_tag asset_path(book.photo), size: '180x260'
-          br/
-          br/
-          span.book-title= book.title
-          br/
-          by
-          = book.author_name
-          br/
-          .star-rating data-score="#{book.average_rating}"
-          br/
-          span.book-description= book.description
-          br/
-          = link_to 'more details', book, id: "more-details-#{book.id}"
-          br/
-          br/
-          span.book-price= "$#{book.unit_price}"
+          .row
+            .book-photo=image_tag asset_path(book.photo), size: '180x260'
+          .row
+            span.book-title= book.title
+          .row
+            by
+            = book.author_name
+          .row
+            .star-rating data-score="#{book.average_rating}"
+          .row
+            span.book-description= book.description
+            br/
+            = link_to 'more details', book, id: "more-details-#{book.id}"
+          .row
+            .book-price= "$#{book.unit_price}"
       hr/
     br/
     br/

@@ -18,7 +18,7 @@
           .form-group
             = f.label :password, class: 'control-label col-sm-2 col-lg-2'
             .col-sm-10.col-lg-10
-              = f.password_field :password, autocomplete: "off", placeholder: 'Password', class: 'form-control'
+              = f.password_field :password, autocomplete: 'off', placeholder: 'Password', class: 'form-control'
 
           - if devise_mapping.rememberable?
             .col-sm-offset-2.col-sm-10.col-lg-offset-2.col-lg-10
