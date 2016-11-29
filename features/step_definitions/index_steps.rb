@@ -1,7 +1,3 @@
-When(/^I visit home page$/) do
-  visit root_path
-end
-
 Given(/^I am already logged into the system$/) do
   @user = create(:user)
 

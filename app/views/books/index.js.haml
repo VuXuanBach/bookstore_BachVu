@@ -1,6 +1,0 @@
-:plain
-  $("#books_grid").html("#{ j render partial: 'books/book_list', locals: { books: @books } }");
-  $(".category-title").html("#{ j @selected_category.name }");
-  $("#dropdown-book-number").html("#{ j render partial: 'static_pages/book_number_dropdown', locals: { num_book_per_page: @num_book_per_page, books_per_page_ranges: @books_per_page_ranges, search: params[:search] } }")
-  $("#flash_messages").html("#{ j render partial: 'layouts/flash', locals: { flash: flash } }")
-  $(".num-book-title").html("#{ j @num_book_per_page ? @num_book_per_page.to_s : Book.max_book_number_page.to_s }");

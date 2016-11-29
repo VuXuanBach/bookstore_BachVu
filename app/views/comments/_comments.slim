@@ -1,5 +1,5 @@
 .row.col-sm-offset-1
-  %span.comment-title.col-sm-11.font-size-12= "Comments: (#{comments.count})"
+  span.comment-title.col-sm-11.font-size-12= "Comments: (#{comments.count})"
 - if comments
   - comments.each do |comment|
     .row.col-sm-offset-1
@@ -12,4 +12,4 @@
       .col-sm-10.comment-time-section
         = "Submitted on #{comment.created_at}"
     .row.col-sm-offset-1
-      %hr.dotted-separator.col-sm-10
+      hr.dotted-separator.col-sm-10

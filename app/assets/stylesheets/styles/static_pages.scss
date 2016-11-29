@@ -5,6 +5,10 @@
     color: $bookstore-orange;
   }
 
+  .book-photo {
+    margin-bottom: 15px;
+  }
+
   .book-title {
     font-size: 14pt;
     color: $bookstore-orange;
@@ -15,11 +19,13 @@
     text-overflow: ellipsis;
     overflow: hidden;
     display: flex;
+    margin-right: 30px;
   }
 
   .book-price {
     font-size: 12pt;
     color: $bookstore-orange;
+    padding: 15px;
   }
 
   #dropdown-max-books {

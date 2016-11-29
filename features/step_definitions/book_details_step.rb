@@ -28,10 +28,6 @@ Given(/^There are several comments belong to each book$/) do
   create_list(:comment, 3, book: @last_book)
 end
 
-When(/^I visit book details page$/) do
-  visit "/books/#{@first_book.id}"
-end
-
 Then(/^I should see that book's comments$/) do
   @first_book.comments.each do |comment|
     expect(page).to have_content(comment.content)
