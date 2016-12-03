@@ -46,6 +46,10 @@ When(/^I comment and rate that book$/) do
   click_on 'Send'
 end
 
+When(/^I comment nothing on that book$/) do
+  click_on 'Send'
+end
+
 Then(/^I should see my new comment on that book$/) do
   expect(page).to have_content('Good')
 end

@@ -1,6 +1,9 @@
 class Book < ActiveRecord::Base
   has_and_belongs_to_many :categories
   has_many :comments
+  has_many :order_lines
+
+  before_destroy :ensure_not_referenced_by_any_order_line
 
   validates :title, :author_name, :publisher_name, presence: true, length: { maximum: 50 }
   validates :description, presence: true, length: { maximum: 500 }
@@ -25,5 +28,16 @@ class Book < ActiveRecord::Base
 
   def average_rating
     comments.average(:rating)&.round || 0
+  end
+
+  private
+
+  def ensure_not_referenced_by_any_order_line
+    if order_lines.empty?
+      return true
+    else
+      errors.add(:base, 'Book exists in order')
+      return false
+    end
   end
 end

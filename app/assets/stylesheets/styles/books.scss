@@ -3,7 +3,7 @@
     font-size: 20pt;
     font-weight: bold;
     color: $bookstore-orange;
-    margin-bottom: 115px;
+    margin-bottom: 10px;
   }
 
   .book-description {
@@ -37,17 +37,24 @@
     position: relative;
     margin-top: 60px;
     display: inline-block;
-  }
 
-  .image-wrapper p {
-    position: absolute;
-    left: 0;
-    top: 0;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    color: white;
-    margin: 5px;
-    border: 0;
+    p {
+      position: absolute;
+      left: 0;
+      top: 0;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      color: white;
+      margin: 5px;
+      border: 0;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+      padding-right: 40px;
+      padding-top: 10px;
+    }
   }
 
   .social-section {

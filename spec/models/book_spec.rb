@@ -26,4 +26,21 @@ RSpec.describe Book, type: :model do
       expect(books).to be_empty
     end
   end
+
+  describe 'delete a book' do
+    before do
+      @book = create(:book)
+    end
+
+    it 'can be deleted when there is no order' do
+      expect{ Book.destroy(@book) }.to change(Book, :count).by(-1)
+    end
+
+    it 'cannot be deleted when there is an order' do
+      order = Order.create
+      order_line = order.order_lines.create(book: @book)
+
+      expect{ Book.destroy(@book) }.not_to change(Book, :count)
+    end
+  end
 end

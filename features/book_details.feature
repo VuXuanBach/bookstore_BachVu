@@ -28,6 +28,14 @@ Feature: Book details
     And I comment and rate that book
     Then I should see my new comment on that book
 
+  Scenario: Comment nothing on a book
+    Given I login as a normal user
+    And There are 2 books
+    And There are several comments belong to each book
+    When I visit "book details page"
+    And I comment nothing on that book
+    Then I should see "Problem posting comment"
+
   Scenario: Anonymous user comment on a book
     Given I am an anonymous user
     And There are 2 books

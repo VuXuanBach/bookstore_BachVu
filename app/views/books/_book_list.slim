@@ -18,7 +18,11 @@
             br/
             = link_to 'more details', book, id: "more-details-#{book.id}"
           .row
-            .book-price= "$#{book.unit_price}"
+            .col-lg-6
+              .book-price= "$#{book.unit_price}"
+            .col-lg-6
+              .image-wrapper
+                = link_to 'Add', order_lines_path(book_id: book), class: 'sprite cart-icon', id: "add-to-cart-#{book.id}", remote: :true, method: :post
       hr/
     br/
     br/

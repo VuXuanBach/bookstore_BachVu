@@ -6,6 +6,10 @@
   @extend .alert-info;
 }
 
+.alert-error {
+  @extend .alert-danger;
+}
+
 .jumbotron {
   background-color: white;
 }
