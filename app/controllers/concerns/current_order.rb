@@ -1,10 +1,14 @@
-module CurrentOrder extend ActiveSupport::Concern
+module CurrentOrder
+  extend ActiveSupport::Concern
+
   private
 
   def set_order
-    @order = Order.find(session[:order_id])
-  rescue ActiveRecord::RecordNotFound
-    @order = Order.create
-    session[:order_id] = @order.id
+    if session[:order_id]
+      @order = Order.find(session[:order_id])
+    else
+      @order = Order.create
+      session[:order_id] = @order.id
+    end
   end
 end
