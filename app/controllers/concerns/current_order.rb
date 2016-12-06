@@ -4,8 +4,8 @@ module CurrentOrder
   private
 
   def set_order
-    if session[:order_id]
-      @order = Order.find(session[:order_id])
+    if order_id = session[:order_id]
+      @order = Order.find(order_id)
     else
       @order = Order.create
       session[:order_id] = @order.id

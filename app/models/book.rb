@@ -34,10 +34,10 @@ class Book < ActiveRecord::Base
 
   def ensure_not_referenced_by_any_order_line
     if order_lines.empty?
-      return true
+      true
     else
       errors.add(:base, 'Book exists in order')
-      return false
+      false
     end
   end
 end

@@ -3,7 +3,7 @@ class CreateOrderLines < ActiveRecord::Migration
     create_table :order_lines do |t|
       t.references :book
       t.belongs_to :order, index: true, foreign_key: true
-      t.integer :quantity
+      t.integer :quantity, default: 1
 
       t.timestamps null: false
     end

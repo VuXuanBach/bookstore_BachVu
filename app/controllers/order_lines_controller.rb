@@ -2,7 +2,7 @@ class OrderLinesController < ApplicationController
   include CurrentOrder
 
   before_action :set_order, only: [:create]
-  before_action :set_order_line, only: [:show, :edit, :update, :destroy]
+  before_action :set_order_line, except: [:create]
 
   def create
     book = Book.find_by(id: params[:book_id])

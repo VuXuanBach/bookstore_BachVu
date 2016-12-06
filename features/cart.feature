@@ -7,6 +7,8 @@ Feature: Add book to cart
   When I visit home page
   And I click Add to cart of first book
   Then I should see "Book is added to order successfully"
+  When I click Add to cart of last book
+  Then I should see "Book is added to order successfully"
 
   Scenario: Add book from book detail to cart
   Given I am an anonymous user

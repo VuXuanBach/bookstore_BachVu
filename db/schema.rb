@@ -65,9 +65,9 @@ ActiveRecord::Schema.define(version: 20161201145407) do
   create_table "order_lines", force: :cascade do |t|
     t.integer  "book_id"
     t.integer  "order_id"
-    t.integer  "quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "quantity",   default: 1
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "order_lines", ["order_id"], name: "index_order_lines_on_order_id", using: :btree
