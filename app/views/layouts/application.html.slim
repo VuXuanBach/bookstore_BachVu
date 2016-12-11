@@ -64,7 +64,7 @@ head
               =link_to 'Cart Details'
 
 #flash_messages.container
-  = render partial: 'layouts/flash', locals:{ flash: flash }
+  = render 'layouts/flash', flash: flash
 
 body class=controller.controller_name
   = yield

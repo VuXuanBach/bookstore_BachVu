@@ -9,6 +9,8 @@ class CommentsController < ApplicationController
     @comments = book.comments
     if @comment.save
       flash.now[:success] = 'Comment posted'
+    else
+      flash.now[:error] = 'Problem posting comment'
     end
   end
 
@@ -19,7 +21,7 @@ class CommentsController < ApplicationController
   end
 
   protected
-  
+
   def authenticate_user!
     if user_signed_in?
       super

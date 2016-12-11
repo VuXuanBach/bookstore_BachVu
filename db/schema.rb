@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117083558) do
+ActiveRecord::Schema.define(version: 20161201145407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,23 @@ ActiveRecord::Schema.define(version: 20161117083558) do
   add_index "comments", ["book_id"], name: "index_comments_on_book_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
+  create_table "order_lines", force: :cascade do |t|
+    t.integer  "book_id"
+    t.integer  "order_id"
+    t.integer  "quantity",   default: 1
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "order_lines", ["order_id"], name: "index_order_lines_on_order_id", using: :btree
+
+  create_table "orders", force: :cascade do |t|
+    t.string   "shipping_address"
+    t.integer  "total_amount",     default: 0
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -90,4 +107,5 @@ ActiveRecord::Schema.define(version: 20161117083558) do
 
   add_foreign_key "comments", "books"
   add_foreign_key "comments", "users"
+  add_foreign_key "order_lines", "orders"
 end

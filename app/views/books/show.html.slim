@@ -33,8 +33,7 @@
           .book-price
             = number_to_currency(@book.unit_price)
           .image-wrapper
-            span.sprite.cart-icon
-            p Add
+            = link_to 'Add', order_lines_path(book_id: @book), class: 'sprite cart-icon', remote: :true, method: :post
     .row.col-lg-offset-1
       hr.separator.col-lg-10
     .row.col-lg-offset-1
@@ -59,4 +58,4 @@
     .row.col-lg-offset-1
       hr.separator.col-lg-10
     #comments-section
-      = render partial: 'comments/comments', locals: { comments: @comments }
+      = render 'comments/comments', comments: @comments
